@@ -1,0 +1,33 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal.is-open {
+  display: flex;
+}
+
+.modal-content {
+  width: min(90%, 600px);
+  padding: 30px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.modal-content textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 10px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.update-btn,
+.modal-close-btn {
+  margin-top: 15px;
+}

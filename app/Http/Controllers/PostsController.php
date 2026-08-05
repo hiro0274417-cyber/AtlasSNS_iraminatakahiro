@@ -2,83 +2,119 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Post;
+use Illuminate\View\View;
 
 class PostsController extends Controller
 {
-    // ⑤ 投稿一覧（自分＋フォローしているユーザー）
-    public function index()
+    /**
+     * 自分とフォローしているユーザーの投稿一覧を表示
+     */
+    public function index(): View
     {
         $user = Auth::user();
 
-        $followIds = $user->followings()->pluck('followed_id');
+        $followIds = $user->followings()
+            ->pluck('followed_id');
+
+        $userIds = $followIds
+            ->push($user->id)
+            ->unique();
 
         $posts = Post::with('user')
-            ->whereIn('user_id', $followIds->push($user->id))
-            ->orderBy('created_at', 'desc')
+            ->whereIn('user_id', $userIds)
+            ->orderByDesc('created_at')
             ->get();
 
         return view('top', compact('posts'));
     }
 
-    // ② 投稿をDBに保存する処理
-    public function create(Request $request)
+    /**
+     * 投稿を新規登録
+     */
+    public function create(Request $request): RedirectResponse
     {
-        $request->validate([
-            'post' => 'required|string|min:1|max:150',
-        ],[
-            'post.required' => '投稿内容を入力してください。',
-            'post.min' => '1文字以上で入力してください。',
-            'post.max' => '150文字以内で入力してください。',
-        ]);
+        $validated = $request->validate(
+            [
+                'post' => ['required', 'string', 'max:150'],
+            ],
+            [
+                'post.required' => '投稿内容を入力してください。',
+                'post.max' => '投稿内容は150文字以内で入力してください。',
+            ]
+        );
 
         Post::create([
             'user_id' => Auth::id(),
-            'post'    => $request->post,
+            'post' => $validated['post'],
         ]);
 
-        return redirect('/top');
+        return redirect()
+            ->route('top')
+            ->with('success', '投稿しました。');
     }
 
-    // ③ 編集処理
-    public function update(Request $request)
+    /**
+     * 投稿を更新
+     */
+    public function update(Request $request): RedirectResponse
     {
-        $request->validate([
-            'post' => 'required|string|min:1|max:150',
-        ],[
-            'post.required' => '投稿内容を入力してください。',
-            'post.min' => '1文字以上で入力してください。',
-            'post.max' => '150文字以内で入力してください。',
-        ]);
+        $validated = $request->validate(
+            [
+                'id' => ['required', 'integer'],
+                'post' => ['required', 'string', 'max:150'],
+            ],
+            [
+                'id.required' => '投稿IDがありません。',
+                'id.integer' => '投稿IDが不正です。',
+                'post.required' => '投稿内容を入力してください。',
+                'post.max' => '投稿内容は150文字以内で入力してください。',
+            ]
+        );
 
-        $post = Post::find($request->id);
+        $post = Post::findOrFail($validated['id']);
 
         if ($post->user_id !== Auth::id()) {
             abort(403);
         }
 
         $post->update([
-            'post' => $request->post,
+            'post' => $validated['post'],
         ]);
 
-        return redirect('/top');
+        return redirect()
+            ->route('top')
+            ->with('success', '投稿を更新しました。');
     }
 
-    // ④ 削除処理
-    public function delete(Request $request)
+    /**
+     * 投稿を削除
+     */
+    public function delete(Request $request): RedirectResponse
     {
-        $post = Post::find($request->id);
+        $validated = $request->validate(
+            [
+                'id' => ['required', 'integer'],
+            ],
+            [
+                'id.required' => '投稿IDがありません。',
+                'id.integer' => '投稿IDが不正です。',
+            ]
+        );
 
-        //自分の投稿以外は削除できない
+        $post = Post::findOrFail($validated['id']);
+
         if ($post->user_id !== Auth::id()) {
             abort(403);
         }
 
         $post->delete();
 
-        return redirect('/top');
+        return redirect()
+            ->route('top')
+            ->with('success', '投稿を削除しました。');
     }
-
 }

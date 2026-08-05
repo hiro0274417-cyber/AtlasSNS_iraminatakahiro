@@ -32,4 +32,19 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function followings()
+    {
+    return $this->hasMany(Follow::class, 'following_id');
+    }
+
+public function followers()
+{
+    return $this->hasMany(Follow::class, 'followed_id');
+}
+public function posts()
+{
+    return $this->hasMany(Post::class, 'user_id');
+}
+
+
 }

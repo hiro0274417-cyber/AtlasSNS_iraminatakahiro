@@ -9,18 +9,27 @@ use App\Models\Follow;
 
 class UsersController extends Controller
 {
-    public function search()
-    {
-        return view('users.search');
-    }
+/**
+ * ユーザー検索画面を表示
+ */
+public function search(Request $request)
+{
+    $keyword = trim((string) $request->query('keyword', ''));
 
-    public function searchResult(Request $request)
-    {
-        $keyword = $request->input('keyword');
-        $users = User::where('username', 'like', "%{$keyword}%")->get();
+    $users = User::query()
+        // 自分自身は検索結果に表示しない
+        ->where('id', '!=', Auth::id())
 
-        return view('users.search', compact('users', 'keyword'));
-    }
+        // キーワードが入力されている場合だけ名前で絞り込む
+        ->when($keyword !== '', function ($query) use ($keyword) {
+            $query->where('username', 'like', '%' . $keyword . '%');
+        })
+
+        ->orderBy('username')
+        ->get();
+
+    return view('users.search', compact('users', 'keyword'));
+}
 
     // 相手ユーザーのプロフィールページ
     public function profile($id)

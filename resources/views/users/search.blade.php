@@ -1,24 +1,69 @@
 @extends('layouts.app')
+
 @section('content')
 
- <h1>ユーザー検索</h1>
+<div class="user-search-page">
 
- <form action="/search" method="GET">
-    <input type="text" name="keyword" placeholder="ユーザー名を検索" value="{{ $keyword ?? '' }}">
-    <button type="submit">検索</button>
- </form>
+    <h1 class="user-search-title">
+        ユーザー検索
+    </h1>
 
- {{-- 検索結果 --}}
- @if(isset($users))
-    <h2>検索結果</h2>
+    {{-- 検索フォーム --}}
+    <form
+        action="{{ route('users.search') }}"
+        method="GET"
+        class="user-search-form"
+    >
+        <input
+            type="text"
+            name="keyword"
+            value="{{ $keyword }}"
+            placeholder="ユーザー名を入力してください"
+            class="user-search-input"
+        >
 
-    @foreach($users as $user)
-        <div class="search-user-box">
-            <a href="/user/profile/{{ $user->id }}">
-                {{ $user->username }}
-            </a>
-        </div>
-    @endforeach
- @endif
+        <button type="submit" class="user-search-button">
+            検索
+        </button>
+    </form>
 
- @endsection
+    {{-- 検索した場合のみ検索ワードを表示 --}}
+    @if ($keyword !== '')
+        <p class="search-keyword">
+            検索ワード：{{ $keyword }}
+        </p>
+    @endif
+
+    {{-- ユーザー一覧 --}}
+    <div class="search-user-list">
+
+        @forelse ($users as $user)
+            <div class="search-user-box">
+
+                <a
+                    href="{{ url('/user/profile/' . $user->id) }}"
+                    class="search-user-profile"
+                >
+                    <img
+                        src="{{ $user->images }}"
+                        alt="{{ $user->username }}のアイコン"
+                        class="search-user-icon"
+                    >
+
+                    <span class="search-user-name">
+                        {{ $user->username }}
+                    </span>
+                </a>
+
+            </div>
+        @empty
+            <p class="search-no-result">
+                該当するユーザーはいません。
+            </p>
+        @endforelse
+
+    </div>
+
+</div>
+
+@endsection

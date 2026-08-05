@@ -1,3 +1,6 @@
+
+<?php $__env->startSection('content'); ?>
+
 <h1>ユーザー詳細ページ</h1>
 
 <div class="profile-box">
@@ -47,4 +50,5 @@
 
 </div>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-<?php /**PATH C:\Users\user\Desktop\cmder\AtlasSNS_iraminatakahiro\resources\views/users/profile.blade.php ENDPATH**/ ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\user\Desktop\cmder\AtlasSNS_iraminatakahiro\resources\views/users/profile.blade.php ENDPATH**/ ?>

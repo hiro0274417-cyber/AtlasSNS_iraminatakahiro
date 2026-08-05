@@ -51,3 +51,64 @@
 .delete-confirm-btn {
   margin-top: 15px;
 }
+
+.user-search-page {
+  width: 100%;
+}
+
+.user-search-title {
+  margin-bottom: 25px;
+}
+
+.user-search-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.user-search-input {
+  width: min(100%, 400px);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.user-search-button {
+  padding: 10px 20px;
+}
+
+.search-keyword {
+  margin-bottom: 20px;
+}
+
+.search-user-list {
+  width: 100%;
+}
+
+.search-user-box {
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.search-user-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.search-user-name {
+  font-size: 16px;
+}
+
+.search-no-result {
+  padding: 30px 0;
+  text-align: center;
+}

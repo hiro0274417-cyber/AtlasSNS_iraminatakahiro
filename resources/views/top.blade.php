@@ -95,7 +95,7 @@
                     <form
                         action="{{ url('/post/delete') }}"
                         method="POST"
-                        class="delete-form";
+                        class="delete-form"
                     >
                         @csrf
 

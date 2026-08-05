@@ -64,6 +64,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/follower-list', [FollowsController::class, 'followerList']);
 
     // ユーザー検索（GET = 画面表示 / POST = 検索実行）
-    Route::get('/search', [UsersController::class, 'search']);
-    Route::post('/search', [UsersController::class, 'searchResult']);
+    Route::get('/search', [UsersController::class, 'search'])
+    ->name('users.search');
 });

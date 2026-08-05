@@ -1,56 +1,164 @@
 @extends('layouts.app')
+
 @section('content')
 
-{{-- ① 投稿フォーム --}}
-@foreach($posts as $post)
-    <div class="post-box">
+{{-- 投稿フォーム --}}
+<div class="post-create-area">
 
-        {{-- 編集ボタン（自分の投稿だけ） --}}
-        @if($post->user_id === Auth::id())
-            <button class="edit-btn"
-                    data-id="{{ $post->id }}"
-                    data-post="{{ $post->post }}">
-                <img src="/images/edit.png" alt="編集">
+    {{-- バリデーションエラー --}}
+    @if ($errors->any())
+        <div class="validation-errors">
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+
+    {{-- 投稿完了メッセージ --}}
+    @if (session('success'))
+        <p class="success-message">
+            {{ session('success') }}
+        </p>
+    @endif
+
+    <form action="{{ url('/post/create') }}" method="POST" class="post-create-form">
+        @csrf
+
+        <img
+            src="{{ Auth::user()->images }}"
+            alt="{{ Auth::user()->username }}のアイコン"
+            class="post-create-icon"
+        >
+
+        <textarea
+            name="post"
+            class="post-create-textarea"
+            placeholder="投稿内容を入力してください"
+            maxlength="150"
+        >{{ old('post') }}</textarea>
+
+        <button type="submit" class="post-create-button">
+            投稿
+        </button>
+    </form>
+</div>
+
+
+{{-- 投稿一覧 --}}
+<div class="post-list">
+
+    @forelse ($posts as $post)
+        <div class="post-box">
+
+            {{-- ユーザーアイコン --}}
+            <img
+                src="{{ $post->user->images }}"
+                alt="{{ $post->user->username }}のアイコン"
+                class="post-icon"
+            >
+
+            <div class="post-main">
+
+                <div class="post-header">
+                    {{-- ユーザー名 --}}
+                    <p class="post-username">
+                        {{ $post->user->username }}
+                    </p>
+
+                    {{-- 投稿日時 --}}
+                    <p class="post-date">
+                        {{ $post->created_at->format('Y-m-d H:i') }}
+                    </p>
+                </div>
+
+                {{-- 投稿内容 --}}
+                <p class="post-text">
+                    {{ $post->post }}
+                </p>
+            </div>
+
+            {{-- 自分の投稿だけ操作可能 --}}
+            @if ($post->user_id === Auth::id())
+                <div class="post-actions">
+
+                    {{-- 編集ボタン --}}
+                    <button
+                        type="button"
+                        class="edit-btn"
+                        data-id="{{ $post->id }}"
+                        data-post="{{ $post->post }}"
+                    >
+                        編集
+                    </button>
+
+                    {{-- 削除フォーム --}}
+                    <form
+                        action="{{ url('/post/delete') }}"
+                        method="POST"
+                        class="delete-form"
+                        onsubmit="return confirm('この投稿を削除しますか？');"
+                    >
+                        @csrf
+
+                        <input
+                            type="hidden"
+                            name="id"
+                            value="{{ $post->id }}"
+                        >
+
+                        <button type="submit" class="delete-btn">
+                            削除
+                        </button>
+                    </form>
+
+                </div>
+            @endif
+
+        </div>
+    @empty
+        <p class="no-post-message">
+            まだ投稿がありません。
+        </p>
+    @endforelse
+
+</div>
+
+
+{{-- 編集モーダル --}}
+<div id="editModal" class="modal">
+
+    <div class="modal-content">
+
+        <form action="{{ url('/post/update') }}" method="POST">
+            @csrf
+
+            <input
+                type="hidden"
+                name="id"
+                id="editPostId"
+            >
+
+            <textarea
+                name="post"
+                id="editPostText"
+                maxlength="150"
+            ></textarea>
+
+            <button type="submit" class="update-btn">
+                更新
             </button>
 
-            {{-- 削除ボタン --}}
-            <form action="/post/delete" method="POST" class="delete-form">
-                @csrf
-                <input type="hidden" name="id" value="{{ $post->id }}">
-                <button type="submit" class="delete-btn">
-                    <img src="/images/delete.png" class="delete-img" alt="削除">
-                </button>
-            </form>
-        @endif
-
-        {{-- ユーザーアイコン --}}
-        <img src="{{ $post->user->images }}" class="post-icon">
-
-        {{-- ユーザー名 --}}
-        <p class="post-username">{{ $post->user->username }}</p>
-
-        {{-- 投稿内容 --}}
-        <p>{{ $post->post }}</p>
-
-        {{-- 投稿日時 --}}
-        <p class="post-date">{{ $post->created_at }}</p>
-
-    </div>
-@endforeach
-
-
-{{-- ③ 編集モーダル --}}
-<div id="editModal" class="modal">
-    <div class="modal-content">
-        <form action="/post/update" method="POST">
-            @csrf
-            <input type="hidden" name="id" id="editPostId">
-            <textarea name="post" id="editPostText"></textarea>
-            <button type="submit" class="update-btn">
-                <img src="/images/update.png" alt="更新">
+            <button
+                type="button"
+                id="closeEditModal"
+                class="modal-close-btn"
+            >
+                キャンセル
             </button>
         </form>
+
     </div>
+
 </div>
 
 @endsection

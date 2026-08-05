@@ -99,20 +99,15 @@
                     <form
                         action="<?php echo e(url('/post/delete')); ?>"
                         method="POST"
-                        class="delete-form"
-                        onsubmit="return confirm('この投稿を削除しますか？');"
+                        class="delete-form";
                     >
                         <?php echo csrf_field(); ?>
 
-                        <input
-                            type="hidden"
-                            name="id"
-                            value="<?php echo e($post->id); ?>"
-                        >
 
-                        <button type="submit" class="delete-btn">
-                            削除
-                        </button>
+                        <button type="button"
+                        class="delete-btn"
+                        data-id="<?php echo e($post->id); ?>">削除
+                    </button>
                     </form>
 
                 </div>
@@ -159,6 +154,46 @@
             >
                 キャンセル
             </button>
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<div id="deleteModal" class="modal">
+
+    <div class="modal-content delete-modal-content">
+
+        <p class="delete-confirm-message">
+            この投稿を削除しますか？
+        </p>
+
+        <form action="<?php echo e(url('/post/delete')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+
+            <input
+                type="hidden"
+                name="id"
+                id="deletePostId"
+            >
+
+            <div class="delete-modal-actions">
+
+                <button type="submit" class="delete-confirm-btn">
+                    削除する
+                </button>
+
+                <button
+                    type="button"
+                    id="closeDeleteModal"
+                    class="modal-close-btn"
+                >
+                    キャンセル
+                </button>
+
+            </div>
         </form>
 
     </div>

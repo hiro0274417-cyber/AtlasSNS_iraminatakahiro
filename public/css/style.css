@@ -31,3 +31,23 @@
 .modal-close-btn {
   margin-top: 15px;
 }
+
+.delete-modal-content {
+  max-width: 420px;
+  text-align: center;
+}
+
+.delete-confirm-message {
+  margin: 0 0 25px;
+  font-size: 18px;
+}
+
+.delete-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.delete-confirm-btn {
+  margin-top: 15px;
+}

@@ -12,15 +12,23 @@ class UsersController extends Controller
 /**
  * ユーザー検索画面を表示
  */
+/**
+ * ユーザー検索画面を表示
+ */
 public function search(Request $request)
 {
     $keyword = trim((string) $request->query('keyword', ''));
 
+    // ログインユーザーが現在フォローしているユーザーID
+    $followingUserIds = Follow::where('following_id', Auth::id())
+        ->pluck('followed_id')
+        ->toArray();
+
     $users = User::query()
-        // 自分自身は検索結果に表示しない
+        // 自分自身は表示しない
         ->where('id', '!=', Auth::id())
 
-        // キーワードが入力されている場合だけ名前で絞り込む
+        // キーワードがある場合だけ部分一致検索
         ->when($keyword !== '', function ($query) use ($keyword) {
             $query->where('username', 'like', '%' . $keyword . '%');
         })
@@ -28,7 +36,10 @@ public function search(Request $request)
         ->orderBy('username')
         ->get();
 
-    return view('users.search', compact('users', 'keyword'));
+    return view(
+        'users.search',
+        compact('users', 'keyword', 'followingUserIds')
+    );
 }
 
     // 相手ユーザーのプロフィールページ
@@ -46,25 +57,49 @@ public function search(Request $request)
     }
 
     // フォロー
-    public function follow($id)
-    {
-        Follow::create([
-            'following_id' => Auth::id(),
-            'followed_id' => $id,
-        ]);
+    /**
+ * ユーザーをフォロー
+ */
+public function follow($id)
+{
+    $targetUserId = (int) $id;
+    $loginUserId = Auth::id();
 
-        return redirect()->back();
+    // 自分自身はフォローできない
+    if ($targetUserId === $loginUserId) {
+        abort(403);
     }
+
+    // 存在しないユーザーなら404
+    User::findOrFail($targetUserId);
+
+    // 同じフォローがなければ作成
+    Follow::firstOrCreate([
+        'following_id' => $loginUserId,
+        'followed_id' => $targetUserId,
+    ]);
+
+    return redirect()
+        ->back()
+        ->with('success', 'フォローしました。');
+}
 
     // フォロー解除
-    public function unfollow($id)
-    {
-        Follow::where('following_id', Auth::id())
-              ->where('followed_id', $id)
-              ->delete();
+    /**
+ * フォローを解除
+ */
+public function unfollow($id)
+{
+    $targetUserId = (int) $id;
 
-        return redirect()->back();
-    }
+    Follow::where('following_id', Auth::id())
+        ->where('followed_id', $targetUserId)
+        ->delete();
+
+    return redirect()
+        ->back()
+        ->with('success', 'フォローを解除しました。');
+}
 
     // プロフィール編集ページ
     public function edit()

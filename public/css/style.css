@@ -385,3 +385,67 @@
   margin-top: 20px;
   padding: 12px 30px;
 }
+
+.auth-page {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-container {
+  width: min(90%, 420px);
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.auth-title {
+  margin: 0 0 30px;
+  text-align: center;
+}
+
+.auth-form {
+  width: 100%;
+}
+
+.auth-form-row {
+  margin-bottom: 20px;
+}
+
+.auth-form-row label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.auth-form-row input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.auth-submit-button {
+  display: block;
+  margin: 25px auto 0;
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+.auth-link {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.validation-errors {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #d9534f;
+}
+
+.validation-errors p {
+  margin: 0 0 5px;
+}
+
+.validation-errors p:last-child {
+  margin-bottom: 0;
+}

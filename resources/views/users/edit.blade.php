@@ -2,42 +2,92 @@
 
 @section('content')
 
-<h1>プロフィール編集</h1>
+<div class="profile-edit-page">
 
-<div class="edit-profile-box">
+    <h1 class="profile-edit-title">
+        プロフィール編集
+    </h1>
 
-    {{-- 現在のアイコン --}}
-    <img src="{{ $user->images }}" class="edit-profile-icon">
+    {{-- エラー表示 --}}
+    @if ($errors->any())
+        <div class="validation-errors">
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
 
-    <form action="/profile/update" method="POST" enctype="multipart/form-data">
+    <form
+        action="{{ url('/profile/update') }}"
+        method="POST"
+        enctype="multipart/form-data"
+        class="profile-edit-form"
+    >
         @csrf
 
-        {{-- ユーザー名 --}}
-        <label>ユーザー名</label>
-        <input type="text" name="username" value="{{ $user->username }}">
+        <div class="profile-edit-row">
 
-        {{-- メールアドレス --}}
-        <label>メールアドレス</label>
-        <input type="email" name="email" value="{{ $user->email }}">
+            <label>
+                アイコン画像
+            </label>
 
-        {{-- 自己紹介文 --}}
-        <label>自己紹介文</label>
-        <textarea name="bio">{{ $user->bio }}</textarea>
+            <input
+                type="file"
+                name="images"
+            >
 
-        {{-- パスワード（伏せ字） --}}
-        <label>パスワード</label>
-        <input type="password" name="password">
+        </div>
 
-        {{-- パスワード確認 --}}
-        <label>パスワード確認</label>
-        <input type="password" name="password_confirmation">
+        <div class="profile-edit-row">
 
-        {{-- アイコン画像（初期値は表示しない） --}}
-        <label>アイコン画像</label>
-        <input type="file" name="images">
+            <label>
+                ユーザー名
+            </label>
 
-        <button type="submit" class="edit-submit-btn">更新する</button>
+            <input
+                type="text"
+                name="username"
+                value="{{ old('username', $user->username) }}"
+            >
+
+        </div>
+
+        <div class="profile-edit-row">
+
+            <label>
+                メールアドレス
+            </label>
+
+            <input
+                type="email"
+                name="email"
+                value="{{ old('email', $user->email) }}"
+            >
+
+        </div>
+
+        <div class="profile-edit-row">
+
+            <label>
+                自己紹介
+            </label>
+
+            <textarea
+                name="bio"
+                rows="5"
+            >{{ old('bio', $user->bio) }}</textarea>
+
+        </div>
+
+        <button
+            type="submit"
+            class="profile-update-button"
+        >
+            更新
+        </button>
+
     </form>
 
 </div>
+
 @endsection

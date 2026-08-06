@@ -40,19 +40,35 @@ public function search(Request $request)
     );
 }
 
-    // 相手ユーザーのプロフィールページ
-    public function profile($id)
-    {
-        $loginUser = Auth::user();                 // ログインユーザー
-        $target = User::with('posts')->find($id);  // 相手ユーザー
+    /**
+ * ユーザープロフィールを表示
+ */
+public function profile($id)
+{
+    $targetUserId = (int) $id;
+    $loginUserId = Auth::id();
 
-        // 自分がフォローしているか判定
-        $isFollow = $loginUser->followings()
-                              ->where('followed_id', $id)
-                              ->exists();
+    $target = User::with([
+        'posts' => function ($query) {
+            $query->orderByDesc('created_at');
+        },
+    ])->findOrFail($targetUserId);
 
-        return view('users.profile', compact('target', 'isFollow'));
+    $isOwnProfile = $targetUserId === $loginUserId;
+
+    $isFollow = false;
+
+    if (!$isOwnProfile) {
+        $isFollow = Follow::where('following_id', $loginUserId)
+            ->where('followed_id', $targetUserId)
+            ->exists();
     }
+
+    return view(
+        'users.profile',
+        compact('target', 'isOwnProfile', 'isFollow')
+    );
+}
 
     // フォロー
     /**
@@ -81,8 +97,9 @@ public function follow($id)
         ->back()
         ->with('success', 'フォローしました。');
 }
-
-    // * フォローを解除 */
+/**
+ * フォローを解除
+ */
 public function unfollow($id)
 {
     $targetUserId = (int) $id;
@@ -104,14 +121,16 @@ public function unfollow($id)
     }
 
     // プロフィール更新処理
-public function update(Request $request)
+    public function update(Request $request)
 {
     $user = Auth::user();
 
     $request->validate([
-        'username' => 'required|max:50',
-        'email' => 'required|email',
-    ]);
+    'username' => 'required|max:50',
+    'email' => 'required|email',
+    'bio' => 'nullable|max:150',
+    'images' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+]);
 
     // 基本項目
     $user->username = $request->username;

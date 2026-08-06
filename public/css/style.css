@@ -235,3 +235,153 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+
+.user-profile-page {
+  width: 100%;
+}
+
+.user-profile-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  padding: 25px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-profile-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-profile-information {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-profile-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.user-profile-name {
+  margin: 0;
+  font-size: 24px;
+}
+
+.user-profile-action form {
+  margin: 0;
+}
+
+.profile-edit-link {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 4px;
+  background: #186ac9;
+  color: #fff;
+  text-decoration: none;
+}
+
+.user-profile-bio {
+  margin: 20px 0 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.user-profile-posts {
+  width: 100%;
+}
+
+.user-profile-post-title {
+  margin: 25px 0 10px;
+}
+
+.user-profile-post-box {
+  display: flex;
+  gap: 15px;
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-profile-post-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-profile-post-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-profile-post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.user-profile-post-name,
+.user-profile-post-date,
+.user-profile-post-text {
+  margin: 0;
+}
+
+.user-profile-post-name {
+  font-weight: bold;
+}
+
+.user-profile-post-date {
+  font-size: 13px;
+}
+
+.user-profile-post-text {
+  margin-top: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.user-profile-no-post {
+  padding: 30px 0;
+  text-align: center;
+}
+
+.profile-edit-page {
+  width: 100%;
+}
+
+.profile-edit-title {
+  margin-bottom: 30px;
+}
+
+.profile-edit-form {
+  width: 100%;
+  max-width: 700px;
+}
+
+.profile-edit-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-edit-row label {
+  width: 120px;
+  font-weight: bold;
+}
+
+.profile-edit-row input,
+.profile-edit-row textarea {
+  flex: 1;
+  padding: 10px;
+}
+
+.profile-update-button {
+  margin-top: 20px;
+  padding: 12px 30px;
+}

@@ -5,22 +5,22 @@
 <div class="connection-list-page">
 
     <h1 class="connection-list-title">
-        フォローリスト
+        フォロワーリスト
     </h1>
 
-    {{-- フォローしているユーザーのアイコン一覧 --}}
+    {{-- フォロワーのアイコン一覧 --}}
     <div class="connection-user-icons">
 
-        @forelse ($followings as $follow)
+        @forelse ($followers as $follower)
 
-            @if ($follow->followedUser)
+            @if ($follower->followingUser)
                 <a
-                    href="{{ url('/user/profile/' . $follow->followedUser->id) }}"
+                    href="{{ url('/user/profile/' . $follower->followingUser->id) }}"
                     class="connection-user-link"
                 >
                     <img
-                        src="{{ $follow->followedUser->images }}"
-                        alt="{{ $follow->followedUser->username }}のアイコン"
+                        src="{{ $follower->followingUser->images }}"
+                        alt="{{ $follower->followingUser->username }}のアイコン"
                         class="connection-user-icon"
                     >
                 </a>
@@ -29,36 +29,36 @@
         @empty
 
             <p class="connection-empty-message">
-                フォローしているユーザーはいません。
+                フォロワーはいません。
             </p>
 
         @endforelse
 
     </div>
 
-    {{-- フォローしているユーザーの投稿 --}}
+    {{-- フォロワーの投稿一覧 --}}
     <div class="connection-post-list">
 
-        @foreach ($followings as $follow)
+        @foreach ($followers as $follower)
 
-            @if ($follow->followedUser)
+            @if ($follower->followingUser)
 
-                @foreach ($follow->followedUser->posts as $post)
+                @foreach ($follower->followingUser->posts as $post)
 
                     <div class="connection-post-box">
 
                         <a
-                            href="{{ url('/user/profile/' . $follow->followedUser->id) }}"
+                            href="{{ url('/user/profile/' . $follower->followingUser->id) }}"
                             class="connection-post-user"
                         >
                             <img
-                                src="{{ $follow->followedUser->images }}"
-                                alt="{{ $follow->followedUser->username }}のアイコン"
+                                src="{{ $follower->followingUser->images }}"
+                                alt="{{ $follower->followingUser->username }}のアイコン"
                                 class="connection-post-icon"
                             >
 
                             <span class="connection-post-username">
-                                {{ $follow->followedUser->username }}
+                                {{ $follower->followingUser->username }}
                             </span>
                         </a>
 

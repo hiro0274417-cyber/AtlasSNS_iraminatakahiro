@@ -5,22 +5,22 @@
 <div class="connection-list-page">
 
     <h1 class="connection-list-title">
-        フォローリスト
+        フォロワーリスト
     </h1>
 
     
     <div class="connection-user-icons">
 
-        <?php $__empty_1 = true; $__currentLoopData = $followings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $follow): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+        <?php $__empty_1 = true; $__currentLoopData = $followers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $follower): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 
-            <?php if($follow->followedUser): ?>
+            <?php if($follower->followingUser): ?>
                 <a
-                    href="<?php echo e(url('/user/profile/' . $follow->followedUser->id)); ?>"
+                    href="<?php echo e(url('/user/profile/' . $follower->followingUser->id)); ?>"
                     class="connection-user-link"
                 >
                     <img
-                        src="<?php echo e($follow->followedUser->images); ?>"
-                        alt="<?php echo e($follow->followedUser->username); ?>のアイコン"
+                        src="<?php echo e($follower->followingUser->images); ?>"
+                        alt="<?php echo e($follower->followingUser->username); ?>のアイコン"
                         class="connection-user-icon"
                     >
                 </a>
@@ -29,7 +29,7 @@
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
             <p class="connection-empty-message">
-                フォローしているユーザーはいません。
+                フォロワーはいません。
             </p>
 
         <?php endif; ?>
@@ -39,26 +39,26 @@
     
     <div class="connection-post-list">
 
-        <?php $__currentLoopData = $followings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $follow): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php $__currentLoopData = $followers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $follower): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-            <?php if($follow->followedUser): ?>
+            <?php if($follower->followingUser): ?>
 
-                <?php $__currentLoopData = $follow->followedUser->posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $follower->followingUser->posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                     <div class="connection-post-box">
 
                         <a
-                            href="<?php echo e(url('/user/profile/' . $follow->followedUser->id)); ?>"
+                            href="<?php echo e(url('/user/profile/' . $follower->followingUser->id)); ?>"
                             class="connection-post-user"
                         >
                             <img
-                                src="<?php echo e($follow->followedUser->images); ?>"
-                                alt="<?php echo e($follow->followedUser->username); ?>のアイコン"
+                                src="<?php echo e($follower->followingUser->images); ?>"
+                                alt="<?php echo e($follower->followingUser->username); ?>のアイコン"
                                 class="connection-post-icon"
                             >
 
                             <span class="connection-post-username">
-                                <?php echo e($follow->followedUser->username); ?>
+                                <?php echo e($follower->followingUser->username); ?>
 
                             </span>
                         </a>

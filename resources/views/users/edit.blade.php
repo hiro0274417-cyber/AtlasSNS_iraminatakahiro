@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app')
 
 @section('content')
 
@@ -79,6 +79,34 @@
 
         </div>
 
+        <div class="profile-edit-row">
+
+    <label>
+        新しいパスワード
+    </label>
+
+    <input
+        type="password"
+        name="new_password"
+        autocomplete="new-password"
+    >
+
+</div>
+
+<div class="profile-edit-row">
+
+    <label>
+        パスワード確認
+    </label>
+
+    <input
+        type="password"
+        name="new_password_confirmation"
+        autocomplete="new-password"
+    >
+
+</div>
+
         <button
             type="submit"
             class="profile-update-button"
@@ -91,3 +119,4 @@
 </div>
 
 @endsection
+ -->

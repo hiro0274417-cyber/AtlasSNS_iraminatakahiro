@@ -1,4 +1,4 @@
-
+<!-- 
 
 <?php $__env->startSection('content'); ?>
 
@@ -79,6 +79,34 @@
 
         </div>
 
+        <div class="profile-edit-row">
+
+    <label>
+        新しいパスワード
+    </label>
+
+    <input
+        type="password"
+        name="new_password"
+        autocomplete="new-password"
+    >
+
+</div>
+
+<div class="profile-edit-row">
+
+    <label>
+        パスワード確認
+    </label>
+
+    <input
+        type="password"
+        name="new_password_confirmation"
+        autocomplete="new-password"
+    >
+
+</div>
+
         <button
             type="submit"
             class="profile-update-button"
@@ -91,5 +119,6 @@
 </div>
 
 <?php $__env->stopSection(); ?>
+ -->
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\user\Desktop\cmder\AtlasSNS_iraminatakahiro\resources\views/users/edit.blade.php ENDPATH**/ ?>

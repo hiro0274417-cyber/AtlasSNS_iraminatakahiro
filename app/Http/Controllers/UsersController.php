@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Follow;
+
 
 class UsersController extends Controller
 {
@@ -121,34 +124,85 @@ public function unfollow($id)
     }
 
     // プロフィール更新処理
-    public function update(Request $request)
+    /**
+ * プロフィールを更新
+ */
+public function update(Request $request)
 {
     $user = Auth::user();
 
-    $request->validate([
-    'username' => 'required|max:50',
-    'email' => 'required|email',
-    'bio' => 'nullable|max:150',
-    'images' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
-]);
+    $validated = $request->validate(
+        [
+            'username' => [
+                'required',
+                'string',
+                'max:50',
+            ],
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('users', 'email')->ignore($user->id),
+            ],
+            'bio' => [
+                'nullable',
+                'string',
+                'max:150',
+            ],
+            'new_password' => [
+                'nullable',
+                'alpha_num',
+                'min:8',
+                'max:20',
+                'confirmed',
+            ],
+            'images' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,gif',
+                'max:2048',
+            ],
+        ],
+        [
+            'username.required' => 'ユーザー名を入力してください。',
+            'username.max' => 'ユーザー名は50文字以内で入力してください。',
+            'email.required' => 'メールアドレスを入力してください。',
+            'email.email' => '正しいメールアドレスを入力してください。',
+            'email.unique' => 'このメールアドレスは既に使用されています。',
+            'bio.max' => '自己紹介は150文字以内で入力してください。',
+            'new_password.alpha_num' => 'パスワードは半角英数字で入力してください。',
+            'new_password.min' => 'パスワードは8文字以上で入力してください。',
+            'new_password.max' => 'パスワードは20文字以内で入力してください。',
+            'new_password.confirmed' => '確認用パスワードと一致しません。',
+            'images.image' => '画像ファイルを選択してください。',
+            'images.mimes' => '画像はjpg、jpeg、png、gif形式を選択してください。',
+            'images.max' => '画像サイズは2MB以内にしてください。',
+        ]
+    );
 
-    // 基本項目
-    $user->username = $request->username;
-    $user->email = $request->email;
+    $user->username = $validated['username'];
+    $user->email = $validated['email'];
+    $user->bio = $validated['bio'] ?? null;
 
-    // 自己紹介文
-    $user->bio = $request->bio;
-
-    // 画像アップロード
-    if ($request->hasFile('images')) {
-        $path = $request->file('images')->store('public/images');
-        $user->images = str_replace('public/', '/storage/', $path);
+    if (!empty($validated['new_password'])) {
+        $user->password = Hash::make($validated['new_password']);
     }
 
-    // 保存
+    if ($request->hasFile('images')) {
+        $path = $request->file('images')->store('public/images');
+
+        $user->images = str_replace(
+            'public/',
+            '/storage/',
+            $path
+        );
+    }
+
     $user->save();
 
-    return redirect('/user/profile/' . $user->id);
+    return redirect()
+        ->to('/user/profile/' . $user->id)
+        ->with('success', 'プロフィールを更新しました。');
 }
 
 

@@ -449,3 +449,19 @@
 .validation-errors p:last-child {
   margin-bottom: 0;
 }
+
+.header-user-image {
+  display: inline-block;
+}
+
+.menu-title {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.sidebar-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

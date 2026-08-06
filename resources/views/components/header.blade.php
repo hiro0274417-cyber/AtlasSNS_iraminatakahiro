@@ -1,27 +1,58 @@
-<div class="header">
+<header class="header">
 
-    <a href="/top" class="header-logo">Atlas</a>
+    <a href="{{ url('/top') }}" class="header-logo">
+        Atlas
+    </a>
 
-    <div class="header-user-menu">
+    <nav
+        class="header-user-menu"
+        aria-label="ユーザーメニュー"
+    >
+        <button
+            type="button"
+            class="menu-title"
+            id="userMenuButton"
+            aria-controls="menuList"
+            aria-expanded="false"
+        >
+            <span>
+                {{ Auth::user()->username }} さん
+            </span>
 
-        <!-- クリック対象（spanを削除してCSSの::afterに任せる） -->
-        <div class="menu-title">
-            {{ Auth::user()->username }} さん
-            <img src="{{ Auth::user()->images }}" class="header-user-icon">
-        </div>
+            <span class="header-user-image">
+                <img
+                    src="{{ Auth::user()->images }}"
+                    alt="{{ Auth::user()->username }}のアイコン"
+                    class="header-user-icon"
+                >
+            </span>
+        </button>
 
-        <!-- ドロップダウンメニュー -->
-        <ul id="menu-list" class="menu-list">
-            <li><a href="/top">HOME</a></li>
-            <li><a href="/profile/edit">プロフィール編集</a></li>
+        <ul id="menuList" class="menu-list">
+
             <li>
-                <form action="/logout" method="POST">
+                <a href="{{ url('/top') }}">
+                    HOME
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url('/profile/edit') }}">
+                    プロフィール編集
+                </a>
+            </li>
+
+            <li>
+                <form action="{{ url('/logout') }}" method="POST">
                     @csrf
-                    <button type="submit">ログアウト</button>
+
+                    <button type="submit">
+                        ログアウト
+                    </button>
                 </form>
             </li>
+
         </ul>
+    </nav>
 
-    </div>
-
-</div>
+</header>

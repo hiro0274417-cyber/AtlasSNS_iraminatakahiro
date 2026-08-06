@@ -1,5 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
   /*
+   * ヘッダーユーザーメニュー
+   */
+  const userMenuButton = document.getElementById('userMenuButton');
+  const menuList = document.getElementById('menuList');
+
+  if (userMenuButton && menuList) {
+    userMenuButton.addEventListener('click', () => {
+      const isOpen = menuList.classList.toggle('is-open');
+
+      userMenuButton.setAttribute(
+        'aria-expanded',
+        String(isOpen)
+      );
+    });
+
+    document.addEventListener('click', (event) => {
+      const clickedInsideMenu =
+        userMenuButton.contains(event.target) ||
+        menuList.contains(event.target);
+
+      if (!clickedInsideMenu) {
+        menuList.classList.remove('is-open');
+        userMenuButton.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /*
    * 投稿編集モーダル
    */
   const editModal = document.getElementById('editModal');

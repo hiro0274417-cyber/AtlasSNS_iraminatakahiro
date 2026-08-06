@@ -465,3 +465,11 @@
   padding: 0;
   list-style: none;
 }
+
+.menu-list {
+  display: none;
+}
+
+.menu-list.is-open {
+  display: block;
+}

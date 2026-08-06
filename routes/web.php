@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
@@ -29,6 +29,12 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 
 // 登録完了
 Route::get('/added', [RegisteredUserController::class, 'added']);
+
+Route::get('/', function () {
+    return Auth::check()
+        ? redirect('/top')
+        : redirect('/login');
+});
 
 
 /*

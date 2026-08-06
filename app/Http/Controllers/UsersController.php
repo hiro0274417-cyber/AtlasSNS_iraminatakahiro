@@ -9,9 +9,7 @@ use App\Models\Follow;
 
 class UsersController extends Controller
 {
-/**
- * ユーザー検索画面を表示
- */
+
 /**
  * ユーザー検索画面を表示
  */
@@ -84,10 +82,7 @@ public function follow($id)
         ->with('success', 'フォローしました。');
 }
 
-    // フォロー解除
-    /**
- * フォローを解除
- */
+    // * フォローを解除 */
 public function unfollow($id)
 {
     $targetUserId = (int) $id;

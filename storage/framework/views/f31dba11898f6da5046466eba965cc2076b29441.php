@@ -1,26 +1,93 @@
 
+
 <?php $__env->startSection('content'); ?>
 
-<h1>フォローリスト</h1>
+<div class="connection-list-page">
 
-<?php $__currentLoopData = $followings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $follow): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-<div class="follow-user-box">
+    <h1 class="connection-list-title">
+        フォローリスト
+    </h1>
 
-    <a href="/user/profile/<?php echo e($follow->followedUser->id); ?>">
-        <img src="<?php echo e($follow->followedUser->images); ?>" class="follow-user-icon">
-    </a>
+    
+    <div class="connection-user-icons">
 
-    <p class="follow-username"><?php echo e($follow->followedUser->username); ?></p>
+        <?php $__empty_1 = true; $__currentLoopData = $followings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $follow): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 
-    <?php $__currentLoopData = $follow->followedUser->posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <div class="follow-post-box">
-            <p class="follow-post-text"><?php echo e($post->post); ?></p>
-            <p class="follow-post-date"><?php echo e($post->created_at); ?></p>
-        </div>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php if($follow->followedUser): ?>
+                <a
+                    href="<?php echo e(url('/user/profile/' . $follow->followedUser->id)); ?>"
+                    class="connection-user-link"
+                >
+                    <img
+                        src="<?php echo e($follow->followedUser->images); ?>"
+                        alt="<?php echo e($follow->followedUser->username); ?>のアイコン"
+                        class="connection-user-icon"
+                    >
+                </a>
+            <?php endif; ?>
+
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+
+            <p class="connection-empty-message">
+                フォローしているユーザーはいません。
+            </p>
+
+        <?php endif; ?>
+
+    </div>
+
+    
+    <div class="connection-post-list">
+
+        <?php $__currentLoopData = $followings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $follow): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+            <?php if($follow->followedUser): ?>
+
+                <?php $__currentLoopData = $follow->followedUser->posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                    <div class="connection-post-box">
+
+                        <a
+                            href="<?php echo e(url('/user/profile/' . $follow->followedUser->id)); ?>"
+                            class="connection-post-user"
+                        >
+                            <img
+                                src="<?php echo e($follow->followedUser->images); ?>"
+                                alt="<?php echo e($follow->followedUser->username); ?>のアイコン"
+                                class="connection-post-icon"
+                            >
+
+                            <span class="connection-post-username">
+                                <?php echo e($follow->followedUser->username); ?>
+
+                            </span>
+                        </a>
+
+                        <div class="connection-post-main">
+
+                            <p class="connection-post-date">
+                                <?php echo e($post->created_at->format('Y-m-d H:i')); ?>
+
+                            </p>
+
+                            <p class="connection-post-text">
+                                <?php echo e($post->post); ?>
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+            <?php endif; ?>
+
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+    </div>
 
 </div>
-<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 <?php $__env->stopSection(); ?>
 

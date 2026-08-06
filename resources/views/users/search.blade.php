@@ -7,11 +7,13 @@
     <h1 class="user-search-title">
         ユーザー検索
     </h1>
+
+    {{-- 成功メッセージ --}}
     @if (session('success'))
-    <p class="success-message">
-        {{ session('success') }}
-    </p>
-@endif
+        <p class="success-message">
+            {{ session('success') }}
+        </p>
+    @endif
 
     {{-- 検索フォーム --}}
     <form
@@ -32,7 +34,7 @@
         </button>
     </form>
 
-    {{-- 検索した場合のみ検索ワードを表示 --}}
+    {{-- 検索ワード --}}
     @if ($keyword !== '')
         <p class="search-keyword">
             検索ワード：{{ $keyword }}
@@ -42,79 +44,76 @@
     {{-- ユーザー一覧 --}}
     <div class="search-user-list">
 
-       @forelse ($users as $user)
+        @forelse ($users as $user)
 
-    <div class="search-user-box">
+            <div class="search-user-box">
 
-        {{-- ユーザー情報 --}}
-        <a
-            href="{{ url('/user/profile/' . $user->id) }}"
-            class="search-user-profile"
-        >
-            <img
-                src="{{ $user->images }}"
-                alt="{{ $user->username }}のアイコン"
-                class="search-user-icon"
-            >
-
-            <span class="search-user-name">
-                {{ $user->username }}
-            </span>
-        </a>
-
-        {{-- フォロー操作 --}}
-        <div class="search-user-action">
-
-            @if (in_array($user->id, $followingUserIds))
-
-                <form
-                    action="{{ url('/unfollow/' . $user->id) }}"
-                    method="POST"
+                {{-- ユーザー情報 --}}
+                <a
+                    href="{{ url('/user/profile/' . $user->id) }}"
+                    class="search-user-profile"
                 >
-                    @csrf
-
-                    <button
-                        type="submit"
-                        class="unfollow-button"
+                    <img
+                        src="{{ $user->images }}"
+                        alt="{{ $user->username }}のアイコン"
+                        class="search-user-icon"
                     >
-                        フォロー解除
-                    </button>
-                </form>
 
-            @else
+                    <span class="search-user-name">
+                        {{ $user->username }}
+                    </span>
+                </a>
 
-                <form
-                    action="{{ url('/follow/' . $user->id) }}"
-                    method="POST"
-                >
-                    @csrf
+                {{-- フォロー操作 --}}
+                <div class="search-user-action">
 
-                    <button
-                        type="submit"
-                        class="follow-button"
-                    >
-                        フォローする
-                    </button>
-                </form>
+                    @if (in_array($user->id, $followingUserIds))
 
-            @endif
+                        <form
+                            action="{{ url('/unfollow/' . $user->id) }}"
+                            method="POST"
+                        >
+                            @csrf
 
-        </div>
+                            <button
+                                type="submit"
+                                class="unfollow-button"
+                            >
+                                フォロー解除
+                            </button>
+                        </form>
+
+                    @else
+
+                        <form
+                            action="{{ url('/follow/' . $user->id) }}"
+                            method="POST"
+                        >
+                            @csrf
+
+                            <button
+                                type="submit"
+                                class="follow-button"
+                            >
+                                フォローする
+                            </button>
+                        </form>
+
+                    @endif
+
+                </div>
+
+            </div>
+
+        @empty
+
+            <p class="search-no-result">
+                該当するユーザーはいません。
+            </p>
+
+        @endforelse
 
     </div>
-
-@empty
-            <div class="search-user-list">
-
-    @forelse ($users as $user)
-
-        {{-- ここにユーザー情報とボタン --}}
-
-    @empty
-        <p class="search-no-result">
-            該当するユーザーはいません。
-        </p>
-    @endforelse
 
 </div>
 

@@ -9,6 +9,14 @@
     </h1>
 
     
+    <?php if(session('success')): ?>
+        <p class="success-message">
+            <?php echo e(session('success')); ?>
+
+        </p>
+    <?php endif; ?>
+
+    
     <form
         action="<?php echo e(route('users.search')); ?>"
         method="GET"
@@ -39,8 +47,10 @@
     <div class="search-user-list">
 
         <?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+
             <div class="search-user-box">
 
+                
                 <a
                     href="<?php echo e(url('/user/profile/' . $user->id)); ?>"
                     class="search-user-profile"
@@ -57,11 +67,53 @@
                     </span>
                 </a>
 
+                
+                <div class="search-user-action">
+
+                    <?php if(in_array($user->id, $followingUserIds)): ?>
+
+                        <form
+                            action="<?php echo e(url('/unfollow/' . $user->id)); ?>"
+                            method="POST"
+                        >
+                            <?php echo csrf_field(); ?>
+
+                            <button
+                                type="submit"
+                                class="unfollow-button"
+                            >
+                                フォロー解除
+                            </button>
+                        </form>
+
+                    <?php else: ?>
+
+                        <form
+                            action="<?php echo e(url('/follow/' . $user->id)); ?>"
+                            method="POST"
+                        >
+                            <?php echo csrf_field(); ?>
+
+                            <button
+                                type="submit"
+                                class="follow-button"
+                            >
+                                フォローする
+                            </button>
+                        </form>
+
+                    <?php endif; ?>
+
+                </div>
+
             </div>
+
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+
             <p class="search-no-result">
                 該当するユーザーはいません。
             </p>
+
         <?php endif; ?>
 
     </div>

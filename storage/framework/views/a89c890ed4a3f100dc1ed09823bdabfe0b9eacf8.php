@@ -99,7 +99,7 @@
                     <form
                         action="<?php echo e(url('/post/delete')); ?>"
                         method="POST"
-                        class="delete-form";
+                        class="delete-form"
                     >
                         <?php echo csrf_field(); ?>
 

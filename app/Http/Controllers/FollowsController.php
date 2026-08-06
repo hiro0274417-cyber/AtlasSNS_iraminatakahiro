@@ -2,31 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use Illuminate\View\View;
 
 class FollowsController extends Controller
 {
-    public function followList()
+    /**
+     * 自分がフォローしているユーザーと、その投稿を表示
+     */
+    public function followList(): View
     {
-        $user = Auth::user();
+        $followings = Auth::user()
+            ->followings()
+            ->with([
+                'followedUser.posts' => function ($query) {
+                    $query->orderByDesc('created_at');
+                },
+            ])
+            ->get();
 
-        // 自分がフォローしているユーザー一覧
-        $followings = $user->followings()->with('followedUser')->get();
-
-        // Blade に渡す変数名を followings に統一
-        return view('follows.followList', compact('followings'));
+        return view(
+            'follows.followList',
+            compact('followings')
+        );
     }
 
-    public function followerList()
+    /**
+     * 自分をフォローしているユーザーと、その投稿を表示
+     */
+    public function followerList(): View
     {
-        $user = Auth::user();
+        $followers = Auth::user()
+            ->followers()
+            ->with([
+                'followingUser.posts' => function ($query) {
+                    $query->orderByDesc('created_at');
+                },
+            ])
+            ->get();
 
-        // 自分をフォローしているユーザー一覧
-        $followers = $user->followers()->with('followingUser')->get();
-
-        // Blade に渡す変数名を followers に統一
-        return view('follows.followerList', compact('followers'));
+        return view(
+            'follows.followerList',
+            compact('followers')
+        );
     }
 }

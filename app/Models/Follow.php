@@ -4,21 +4,36 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Follow extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'following_id',
         'followed_id',
     ];
 
-    public function followedUser()
+    /**
+     * フォローしている相手
+     */
+    public function followedUser(): BelongsTo
     {
-        return $this->belongsTO(User::class, 'followed_id');
+        return $this->belongsTo(
+            User::class,
+            'followed_id'
+        );
     }
-    public function followingUser()
+
+    /**
+     * フォロワー
+     */
+    public function followingUser(): BelongsTo
     {
-        return $this->belongsTO(User::class, 'following_id');
+        return $this->belongsTo(
+            User::class,
+            'following_id'
+        );
     }
 }

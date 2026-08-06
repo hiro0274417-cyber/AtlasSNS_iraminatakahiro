@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Follow;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Follow;
+use Illuminate\View\View;
 
 
 class UsersController extends Controller
@@ -16,7 +18,7 @@ class UsersController extends Controller
 /**
  * ユーザー検索画面を表示
  */
-public function search(Request $request)
+public function search(Request $request): View
 {
     $keyword = trim((string) $request->query('keyword', ''));
 
@@ -46,7 +48,7 @@ public function search(Request $request)
     /**
  * ユーザープロフィールを表示
  */
-public function profile($id)
+public function profile($id): View
 {
     $targetUserId = (int) $id;
     $loginUserId = Auth::id();
@@ -73,11 +75,10 @@ public function profile($id)
     );
 }
 
-    // フォロー
     /**
  * ユーザーをフォロー
  */
-public function follow($id)
+public function follow($id): RedirectResponse
 {
     $targetUserId = (int) $id;
     $loginUserId = Auth::id();
@@ -103,7 +104,7 @@ public function follow($id)
 /**
  * フォローを解除
  */
-public function unfollow($id)
+public function unfollow($id): RedirectResponse
 {
     $targetUserId = (int) $id;
 
@@ -116,18 +117,17 @@ public function unfollow($id)
         ->with('success', 'フォローを解除しました。');
 }
 
-    // プロフィール編集ページ
-    public function edit()
+
+    public function edit(): View
     {
         $user = Auth::user();
         return view('users.edit', compact('user'));
     }
 
-    // プロフィール更新処理
-    /**
+
  * プロフィールを更新
  */
-public function update(Request $request)
+public function update(Request $request): RedirectResponse
 {
     $user = Auth::user();
 

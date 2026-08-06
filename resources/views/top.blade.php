@@ -98,9 +98,9 @@
                     class="delete-btn"
                     data-id="{{ $post->id }}"
 >
-    削除
-</button>
-                    </form>
+                    削除
+                </button>
+
 
                 </div>
             @endif

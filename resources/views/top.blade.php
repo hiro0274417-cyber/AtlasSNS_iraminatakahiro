@@ -91,19 +91,15 @@
                         編集
                     </button>
 
-                    {{-- 削除フォーム --}}
-                    <form
-                        action="{{ url('/post/delete') }}"
-                        method="POST"
-                        class="delete-form"
-                    >
-                        @csrf
 
-
-                        <button type="button"
-                        class="delete-btn"
-                        data-id="{{ $post->id }}">削除
-                    </button>
+                    {{-- 削除ボタン --}}
+                    <button
+                    type="button"
+                    class="delete-btn"
+                    data-id="{{ $post->id }}"
+>
+    削除
+</button>
                     </form>
 
                 </div>

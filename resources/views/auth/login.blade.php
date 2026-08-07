@@ -1,32 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>ログイン</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/style.css') }}"
+    >
 </head>
-<body>
-    <h1>ログインページ</h1>
 
-    <!-- フォーム開始：送信先(url)を '/login' に指定 -->
-    {!! Form::open(['url' => '/login']) !!}
+<body class="auth-page">
 
-        <div>
-            <label>メールアドレス</label>
-            {!! Form::email('email', null, ['class' => 'input']) !!}
-        </div>
+    <main class="auth-container">
 
-        <div>
-            <label>パスワード</label>
-            {!! Form::password('password', ['class' => 'input']) !!}
-        </div>
+        <h1 class="auth-title">
+            ログイン
+        </h1>
 
-        <div>
-            {!! Form::submit('ログイン') !!}
-        </div>
+        @if ($errors->any())
+            <div class="validation-errors">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
 
-    {!! Form::close() !!}
+        <form
+            action="{{ url('/login') }}"
+            method="POST"
+            class="auth-form"
+        >
+            @csrf
 
-    <!--新規登録画面へのリンク-->
-    <p><a href="/register">新規ユーザー登録はこちら</a></p>
+            <div class="auth-form-row">
+
+                <label for="email">
+                    メールアドレス
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="{{ old('email') }}"
+                    autocomplete="email"
+                >
+
+            </div>
+
+            <div class="auth-form-row">
+
+                <label for="password">
+                    パスワード
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    autocomplete="current-password"
+                >
+
+            </div>
+
+            <button
+                type="submit"
+                class="auth-submit-button"
+            >
+                ログイン
+            </button>
+
+        </form>
+
+        <p class="auth-link">
+            <a href="{{ url('/register') }}">
+                新規ユーザー登録はこちら
+            </a>
+        </p>
+
+    </main>
 
 </body>
 </html>

@@ -8,7 +8,6 @@
         プロフィール編集
     </h1>
 
-    {{-- エラー表示 --}}
     @if ($errors->any())
         <div class="validation-errors">
             @foreach ($errors->all() as $error)
@@ -26,86 +25,80 @@
         @csrf
 
         <div class="profile-edit-row">
-
-            <label>
+            <label for="images">
                 アイコン画像
             </label>
 
             <input
                 type="file"
+                id="images"
                 name="images"
             >
-
         </div>
 
         <div class="profile-edit-row">
-
-            <label>
+            <label for="username">
                 ユーザー名
             </label>
 
             <input
                 type="text"
+                id="username"
                 name="username"
                 value="{{ old('username', $user->username) }}"
             >
-
         </div>
 
         <div class="profile-edit-row">
-
-            <label>
+            <label for="email">
                 メールアドレス
             </label>
 
             <input
                 type="email"
+                id="email"
                 name="email"
                 value="{{ old('email', $user->email) }}"
             >
-
         </div>
 
         <div class="profile-edit-row">
-
-            <label>
+            <label for="bio">
                 自己紹介
             </label>
 
             <textarea
+                id="bio"
                 name="bio"
                 rows="5"
             >{{ old('bio', $user->bio) }}</textarea>
-
         </div>
 
         <div class="profile-edit-row">
+            <label for="newPassword">
+                新しいパスワード
+            </label>
 
-    <label>
-        新しいパスワード
-    </label>
+            <input
+                type="password"
+                id="newPassword"
+                name="new_password"
+                autocomplete="new-password"
+            >
+        </div>
 
-    <input
-        type="password"
-        name="new_password"
-        autocomplete="new-password"
-    >
+        <div class="profile-edit-row">
+            <label for="newPasswordConfirmation">
+                パスワード確認
+            </label>
 
-</div>
-
-<div class="profile-edit-row">
-
-    <label>
-        パスワード確認
-    </label>
-
-    <input
-        type="password"
-        name="new_password_confirmation"
-        autocomplete="new-password"
-    >
-
-</div>
+            <input
+                type="password"
+                id="newPasswordConfirmation"
+                name="new_password_confirmation"
+                autocomplete="new-password"
+            >
+        </div>
 
         <button
             type="submit"

@@ -1,3 +1,8 @@
+@charset "UTF-8";
+
+/* =========================
+   Modal
+========================= */
 .modal {
   position: fixed;
   inset: 0;
@@ -52,6 +57,9 @@
   margin-top: 15px;
 }
 
+/* =========================
+   User Search
+========================= */
 .user-search-page {
   width: 100%;
 }
@@ -95,6 +103,7 @@
 
 .search-user-profile {
   display: flex;
+  flex: 1;
   align-items: center;
   gap: 15px;
   color: inherit;
@@ -117,14 +126,14 @@
   text-align: center;
 }
 
-.search-user-profile {
-  flex: 1;
-}
 
 .search-user-action form {
   margin: 0;
 }
 
+/* =========================
+   Follow / Follower List
+========================= */
 .follow-button,
 .unfollow-button {
   min-width: 120px;
@@ -144,6 +153,9 @@
   color: #fff;
 }
 
+/* =========================
+   Follow / Follower List
+========================= */
 .success-message {
   margin-bottom: 15px;
   padding: 10px;

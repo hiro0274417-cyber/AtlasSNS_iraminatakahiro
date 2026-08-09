@@ -12,7 +12,7 @@
     @endif
 
     {{-- プロフィール情報 --}}
-    <div class="user-profile-header">
+    <section class="user-profile-header">
 
         <img
             src="{{ $target->images }}"
@@ -85,10 +85,10 @@
 
         </div>
 
-    </div>
+    </section>
 
     {{-- 投稿一覧 --}}
-    <div class="user-profile-posts">
+    <section class="user-profile-posts">
 
         <h2 class="user-profile-post-title">
             投稿一覧
@@ -134,7 +134,7 @@
 
         @endforelse
 
-    </div>
+    </section>
 
 </div>
 

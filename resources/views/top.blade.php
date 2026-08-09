@@ -30,14 +30,19 @@
             class="post-create-icon"
         >
 
-        <textarea
-            name="post"
-            class="post-create-textarea"
-            placeholder="投稿内容を入力してください"
-            maxlength="150"
-        >{{ old('post') }}</textarea>
+        <label for="post" class="visually-hidden">
+         投稿内容
+         </label>
 
-        <button type="submit" class="post-create-button">
+            <textarea
+                id="post"
+                name="post"
+                class="post-create-textarea"
+                placeholder="投稿内容を入力してください"
+                maxlength="150"
+            >{{ old('post') }}</textarea>
+
+         <button type="submit" class="post-create-button">
             投稿
         </button>
     </form>
@@ -114,6 +119,10 @@
 
 </div>
 
+
+<label for="editPostText" class="visually-hidden">
+    投稿内容
+</label>
 
 {{-- 編集モーダル --}}
 <div id="editModal" class="modal">

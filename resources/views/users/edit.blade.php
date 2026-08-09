@@ -33,6 +33,7 @@
                 type="file"
                 id="images"
                 name="images"
+                 accept="image/jpeg,image/png"
             >
         </div>
 

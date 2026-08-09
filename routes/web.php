@@ -69,7 +69,7 @@ Route::middleware('auth')->group(function () {
     // フォロワーリスト
     Route::get('/follower-list', [FollowsController::class, 'followerList']);
 
-    // ユーザー検索（GET)
+    // ユーザー検索（GET）
     Route::get('/search', [UsersController::class, 'search'])
     ->name('users.search');
 });

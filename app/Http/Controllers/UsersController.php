@@ -162,7 +162,7 @@ class UsersController extends Controller
                     'image',
                     'mimes:jpg,jpeg,png',
                     'max:2048',
-                    ],
+                ],
             ],
             [
                 'username.required'

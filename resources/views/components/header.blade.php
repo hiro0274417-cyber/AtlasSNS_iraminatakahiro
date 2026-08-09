@@ -19,6 +19,8 @@
                 {{ Auth::user()->username }} さん
             </span>
 
+            <span class="menu-arrow" aria-hidden="true"></span>
+
             <span class="header-user-image">
                 <img
                     src="{{ Auth::user()->images }}"

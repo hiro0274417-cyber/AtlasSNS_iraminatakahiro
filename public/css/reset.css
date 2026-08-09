@@ -1,0 +1,35 @@
+/* =========================
+   Reset CSS
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+form {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}

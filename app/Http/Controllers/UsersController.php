@@ -160,9 +160,9 @@ class UsersController extends Controller
                 'images' => [
                     'nullable',
                     'image',
-                    'mimes:jpg,jpeg,png,gif',
+                    'mimes:jpg,jpeg,png',
                     'max:2048',
-                ],
+                    ],
             ],
             [
                 'username.required'
@@ -188,7 +188,7 @@ class UsersController extends Controller
                 'images.image'
                     => '画像ファイルを選択してください。',
                 'images.mimes'
-                    => '画像はjpg、jpeg、png、gif形式を選択してください。',
+                    => '画像はjpg、jpeg、png形式を選択してください。',
                 'images.max'
                     => '画像サイズは2MB以内にしてください。',
             ]

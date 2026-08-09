@@ -10,11 +10,9 @@
 
     <title>ログイン</title>
 
-    <link
-        rel="stylesheet"
-        href="{{ asset('css/style.css') }}"
-    >
-</head>
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    </head>
 
 <body class="auth-page">
 

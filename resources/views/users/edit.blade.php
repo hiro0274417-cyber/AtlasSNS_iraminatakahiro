@@ -71,7 +71,7 @@
 
         <div class="profile-edit-row">
             <label for="bio">
-                自己紹介
+                自己紹介文
             </label>
 
             <textarea
@@ -83,7 +83,7 @@
 
         <div class="profile-edit-row">
             <label for="newPassword">
-                新しいパスワード
+                パスワード
             </label>
 
             <input

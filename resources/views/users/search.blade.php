@@ -25,12 +25,12 @@
             type="text"
             name="keyword"
             value="{{ $keyword }}"
-            placeholder="ユーザー名を入力してください"
+            placeholder="ユーザー名"
             class="user-search-input"
         >
 
         <button type="submit" class="user-search-button">
-            検索
+            <img src="{{ asset('images/search.png') }}" alt="検索">
         </button>
     </form>
 

@@ -36,7 +36,7 @@
 
     </div>
 
-    {{-- フォロワーの投稿一覧 --}}
+    {{-- フォロワーの投稿 --}}
     <div class="connection-post-list">
 
         @foreach ($posts as $post)

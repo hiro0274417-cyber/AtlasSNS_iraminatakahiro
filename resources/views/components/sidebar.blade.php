@@ -2,33 +2,37 @@
 
     <section class="sidebar-status">
 
+    <p class="sidebar-username">
+        {{ Auth::user()->username }}さんの
+    </p>
+
+    <div class="sidebar-count-block">
         <p>
-            フォロー：
-            {{ Auth::user()->followings()->count() }}
+            <span>フォロー数</span>
+            <span>{{ Auth::user()->followings()->count() }}人</span>
         </p>
 
+        <a href="{{ url('/follow-list') }}">
+            フォローリスト
+        </a>
+    </div>
+
+    <div class="sidebar-count-block">
         <p>
-            フォロワー：
-            {{ Auth::user()->followers()->count() }}
+            <span>フォロワー数</span>
+            <span>{{ Auth::user()->followers()->count() }}人</span>
         </p>
 
-    </section>
+        <a href="{{ url('/follower-list') }}">
+            フォロワーリスト
+        </a>
+    </div>
+
+</section>
 
     <nav aria-label="サイドメニュー">
 
         <ul class="sidebar-menu">
-
-            <li>
-                <a href="{{ url('/follow-list') }}">
-                    フォローリスト
-                </a>
-            </li>
-
-            <li>
-                <a href="{{ url('/follower-list') }}">
-                    フォロワーリスト
-                </a>
-            </li>
 
             <li>
                 <a href="{{ url('/search') }}">

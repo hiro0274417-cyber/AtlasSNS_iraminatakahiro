@@ -19,13 +19,16 @@
     <main class="auth-container">
 
         <h1 class="auth-title">
-            登録が完了しました
+            {{ session('username') }}さん
+            <br>
+            ようこそ！AtlasSNSへ
         </h1>
 
         <p>
-            ようこそ、{{ session('username') }} さん！
+            ユーザー登録が完了いたしました。
+            <br>
+            早速ログインをしてみましょう！
         </p>
-
         <p class="auth-link">
             <a href="{{ url('/login') }}">
                 ログインページへ

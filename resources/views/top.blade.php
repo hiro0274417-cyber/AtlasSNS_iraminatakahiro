@@ -43,7 +43,7 @@
             >{{ old('post') }}</textarea>
 
          <button type="submit" class="post-create-button">
-            投稿
+            <img src="{{ asset('images/post.png') }}" alt="投稿">
         </button>
     </form>
 </div>
@@ -56,11 +56,13 @@
         <div class="post-box">
 
             {{-- ユーザーアイコン --}}
-            <img
-                src="{{ $post->user->icon_image_url }}"
-                alt="{{ $post->user->username }}のアイコン"
-                class="post-icon"
-            >
+            <a href="{{ url('/user/profile/' . $post->user->id) }}">
+                <img
+                    src="{{ $post->user->icon_image_url }}"
+                    alt="{{ $post->user->username }}のアイコン"
+                    class="post-icon"
+                >
+            </a>
 
             <div class="post-main">
 
@@ -88,25 +90,24 @@
             @if ($post->user_id === Auth::id())
                 <div class="post-actions">
 
-                    {{-- 編集ボタン --}}
                     <button
                         type="button"
                         class="edit-btn"
                         data-id="{{ $post->id }}"
                         data-post="{{ $post->post }}"
                     >
-                        編集
+                        <img src="{{ asset('images/edit.png') }}" alt="編集">
                     </button>
 
 
                     {{-- 削除ボタン --}}
                     <button
-                    type="button"
-                    class="delete-btn"
-                    data-id="{{ $post->id }}"
->
-                    削除
-                </button>
+                        type="button"
+                        class="delete-btn"
+                        data-id="{{ $post->id }}"
+                    >
+                        <img src="{{ asset('images/trash.png') }}" alt="削除">
+                    </button>
 
 
                 </div>

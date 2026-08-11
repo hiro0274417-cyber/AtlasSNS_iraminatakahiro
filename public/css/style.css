@@ -585,3 +585,34 @@
   border-radius: 50%;
   flex-shrink: 0;
 }
+
+.sidebar-username {
+  margin-bottom: 30px;
+}
+
+.sidebar-count-block {
+  margin-bottom: 35px;
+}
+
+.sidebar-count-block p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-count-block a {
+  display: block;
+  width: 150px;
+  margin: 20px 0 0 auto;
+  padding: 12px 10px;
+  box-sizing: border-box;
+  background: #186ac9;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.delete-btn:hover {
+  filter: brightness(0) invert(1);
+}

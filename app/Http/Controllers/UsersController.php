@@ -33,7 +33,7 @@ class UsersController extends Controller
                     '%' . $keyword . '%'
                 );
             })
-            ->orderBy('username')
+            ->orderBy('created_at', 'desc')
             ->get();
 
         return view(
@@ -136,14 +136,17 @@ class UsersController extends Controller
                 'username' => [
                     'required',
                     'string',
-                    'max:50',
+                    'min:2',
+                    'max:12',
                 ],
+
                 'email' => [
                     'required',
+                    'string',
+                    'min:5',
+                    'max:40',
                     'email',
-                    'max:255',
-                    Rule::unique('users', 'email')
-                        ->ignore($user->id),
+                    Rule::unique('users', 'email')->ignore($user->id),
                 ],
                 'bio' => [
                     'nullable',
@@ -151,17 +154,16 @@ class UsersController extends Controller
                     'max:150',
                 ],
                 'new_password' => [
+                'required',
+                'alpha_num',
+                'min:8',
+                'max:20',
+                'confirmed',
+            ],
+                'icon_image' => [
                     'nullable',
-                    'alpha_num',
-                    'min:8',
-                    'max:20',
-                    'confirmed',
-                ],
-                'images' => [
-                    'nullable',
-                    'image',
-                    'mimes:jpg,jpeg,png',
-                    'max:2048',
+                    'file',
+                    'mimes:jpg,jpeg,png,bmp,gif,svg',
                 ],
             ],
             [
@@ -191,6 +193,9 @@ class UsersController extends Controller
                     => '画像はjpg、jpeg、png形式を選択してください。',
                 'images.max'
                     => '画像サイズは2MB以内にしてください。',
+
+                'new_password.required'
+                    => 'パスワードを入力してください。',
             ]
         );
 
@@ -204,12 +209,12 @@ class UsersController extends Controller
             );
         }
 
-        if ($request->hasFile('images')) {
+        if ($request->hasFile('icon_image')) {
             $path = $request
-                ->file('images')
+                ->file('icon_image')
                 ->store('public/images');
 
-            $user->images = str_replace(
+            $user->icon_image = str_replace(
                 'public/',
                 '/storage/',
                 $path

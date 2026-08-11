@@ -25,17 +25,23 @@
         @csrf
 
         <div class="profile-edit-row">
-            <label for="images">
-                アイコン画像
-            </label>
+         <label for="images">
+            アイコン画像
+        </label>
+
+            <img
+                src="{{ $user->icon_image }}"
+                alt="{{ $user->username }}のアイコン"
+                class="profile-edit-icon"
+            >
 
             <input
                 type="file"
                 id="images"
-                name="images"
-                 accept="image/jpeg,image/png"
+                name="icon_image"
+                accept=".jpg,.jpeg,.png,.bmp,.gif,.svg"
             >
-        </div>
+            </div>
 
         <div class="profile-edit-row">
             <label for="username">

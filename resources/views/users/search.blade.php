@@ -54,7 +54,7 @@
                     class="search-user-profile"
                 >
                     <img
-                        src="{{ $user->images }}"
+                        src="{{ $user->icon_image }}"
                         alt="{{ $user->username }}のアイコン"
                         class="search-user-icon"
                     >

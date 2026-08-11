@@ -25,7 +25,7 @@
         @csrf
 
         <img
-            src="{{ Auth::user()->images }}"
+            src="{{ $post->user->icon_image }}"
             alt="{{ Auth::user()->username }}のアイコン"
             class="post-create-icon"
         >

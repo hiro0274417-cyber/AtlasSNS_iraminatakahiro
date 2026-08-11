@@ -15,7 +15,7 @@
     <section class="user-profile-header">
 
         <img
-            src="{{ $target->images }}"
+            src="{{ $target->icon_image }}"
             alt="{{ $target->username }}のアイコン"
             class="user-profile-icon"
         >
@@ -99,7 +99,7 @@
             <div class="user-profile-post-box">
 
                 <img
-                    src="{{ $target->images }}"
+                    src="{{ $target->icon_image }}"
                     alt="{{ $target->username }}のアイコン"
                     class="user-profile-post-icon"
                 >

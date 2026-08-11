@@ -21,6 +21,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'icon_image',
     ];
 
     /**
@@ -55,5 +56,17 @@ class User extends Authenticatable
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class, 'user_id');
+    }
+
+    /**
+     *アイコンURL
+     */
+    public function getIconImageUrlAttribute(): string
+    {
+        if (str_starts_with($this->icon_image, '/storage/')) {
+            return $this->icon_image;
+        }
+
+        return asset('images/' . $this->icon_image);
     }
 }

@@ -15,7 +15,7 @@
     <section class="user-profile-header">
 
         <img
-            src="{{ $target->icon_image }}"
+            src="{{ $target->icon_image_url }}"
             alt="{{ $target->username }}のアイコン"
             class="user-profile-icon"
         >

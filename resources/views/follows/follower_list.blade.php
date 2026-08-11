@@ -19,7 +19,7 @@
                     class="connection-user-link"
                 >
                     <img
-                        src="{{ $follower->followingUser->icon_image }}"
+                        src="{{ $follower->followingUser->icon_image_url }}"
                         alt="{{ $follower->followingUser->username }}のアイコン"
                         class="connection-user-icon"
                     >
@@ -48,7 +48,7 @@
                 class="connection-post-user"
             >
                 <img
-                    src="{{ $post->user->icon_image }}"
+                    src="{{ $post->user->icon_image_url }}"
                     alt="{{ $post->user->username }}のアイコン"
                     class="connection-post-icon"
                 >

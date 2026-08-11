@@ -21,7 +21,7 @@ class FollowsController extends Controller
     $followed_user_ids = $followings
         ->pluck('followed_id');
 
-    $posts = \App\Models\Post::with('user')
+    $posts = Post::with('user')
         ->whereIn('user_id', $followed_user_ids)
         ->orderByDesc('created_at')
         ->get();

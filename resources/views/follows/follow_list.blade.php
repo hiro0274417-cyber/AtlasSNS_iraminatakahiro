@@ -19,7 +19,7 @@
                     class="connection-user-link"
                 >
                     <img
-                        src="{{ $follow->followedUser->icon_image }}"
+                        src="{{ $follow->followedUser->icon_image_url }}"
                         alt="{{ $follow->followedUser->username }}のアイコン"
                         class="connection-user-icon"
                     >
@@ -34,12 +34,12 @@
 
         @endforelse
 
-    </div>
+        </div>
 
-    {{-- フォローしているユーザーの投稿 --}}
-<div class="connection-post-list">
+     {{-- フォローしているユーザーの投稿 --}}
+        <div class="connection-post-list">
 
-    @foreach ($posts as $post)
+        @foreach ($posts as $post)
 
         <div class="connection-post-box">
 
@@ -48,7 +48,7 @@
                 class="connection-post-user"
             >
                 <img
-                    src="{{ $post->user->icon_image }}"
+                    src="{{ $post->user->icon_image_url }}"
                     alt="{{ $post->user->username }}のアイコン"
                     class="connection-post-icon"
                 >
@@ -72,8 +72,8 @@
 
         </div>
 
-    @endforeach
+      @endforeach
 
+    </div>
 </div>
-
 @endsection

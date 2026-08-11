@@ -64,7 +64,7 @@ class PostsController extends Controller
     {
         $validated = $request->validate(
             [
-                'id' => ['required', 'integer'],
+                'id' => ['required', 'integer','exists:posts,id'],
                 'post' => ['required', 'string', 'max:150'],
             ],
             [
@@ -97,7 +97,7 @@ class PostsController extends Controller
     {
         $validated = $request->validate(
             [
-                'id' => ['required', 'integer'],
+                'id' => ['required', 'integer','exists:posts,id'],
             ],
             [
                 'id.required' => '投稿IDがありません。',

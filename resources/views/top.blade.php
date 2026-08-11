@@ -25,7 +25,7 @@
         @csrf
 
         <img
-            src="{{ $post->user->icon_image }}"
+            src="{{ Auth::user()->icon_image_url }}"
             alt="{{ Auth::user()->username }}のアイコン"
             class="post-create-icon"
         >
@@ -57,7 +57,7 @@
 
             {{-- ユーザーアイコン --}}
             <img
-                src="{{ $post->user->images }}"
+                src="{{ $post->user->icon_image_url }}"
                 alt="{{ $post->user->username }}のアイコン"
                 class="post-icon"
             >
@@ -66,9 +66,11 @@
 
                 <div class="post-header">
                     {{-- ユーザー名 --}}
-                    <p class="post-username">
+                    <a
+                        href="{{ url('/user/profile/' . $post->user->id) }}"
+                        class="post-username">
                         {{ $post->user->username }}
-                    </p>
+                    </a>
 
                     {{-- 投稿日時 --}}
                     <p class="post-date">

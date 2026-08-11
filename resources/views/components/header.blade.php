@@ -23,7 +23,7 @@
 
             <span class="header-user-image">
                 <img
-                    src="{{ Auth::user()->icon_image }}"
+                    src="{{ Auth::user()->icon_image_url }}"
                     alt="{{ Auth::user()->username }}のアイコン"
                     class="header-user-icon"
                 >

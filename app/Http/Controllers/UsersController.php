@@ -154,23 +154,23 @@ class UsersController extends Controller
                     'max:150',
                 ],
                 'new_password' => [
-                'required',
-                'alpha_num',
-                'min:8',
-                'max:20',
-                'confirmed',
-            ],
-                'icon_image' => [
                     'nullable',
-                    'file',
-                    'mimes:jpg,jpeg,png,bmp,gif,svg',
+                    'alpha_num',
+                    'min:8',
+                    'max:20',
+                    'confirmed',
+                ],
+                'icon_image' => [
+                        'nullable',
+                        'file',
+                        'mimes:jpg,jpeg,png,bmp,gif,svg',
                 ],
             ],
             [
-                'username.required'
+                'username.nullable'
                     => 'ユーザー名を入力してください。',
                 'username.max'
-                    => 'ユーザー名は50文字以内で入力してください。',
+                    => 'ユーザー名は12文字以内で入力してください。',
                 'email.required'
                     => 'メールアドレスを入力してください。',
                 'email.email'
@@ -187,14 +187,11 @@ class UsersController extends Controller
                     => 'パスワードは20文字以内で入力してください。',
                 'new_password.confirmed'
                     => '確認用パスワードと一致しません。',
-                'images.image'
+                'icon_image.file'
                     => '画像ファイルを選択してください。',
-                'images.mimes'
-                    => '画像はjpg、jpeg、png形式を選択してください。',
-                'images.max'
-                    => '画像サイズは2MB以内にしてください。',
-
-                'new_password.required'
+                'icon_image.mimes'
+                    => '画像はjpg、jpeg、png、bmp、gif、svg形式を選択してください。',
+                'new_password.nullable'
                     => 'パスワードを入力してください。',
             ]
         );

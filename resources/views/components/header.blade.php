@@ -1,8 +1,8 @@
 <header class="header">
 
-    <a href="{{ url('/top') }}"     class="header-logo">
-    <img src="{{ asset('images/atlas.png') }}" alt="AtlasSNS">
-    </a>
+        <a href="{{ url('/top') }}" class="atlas-logo">
+    <span class="atlas-logo-bold">Atl</span><span class="atlas-logo-light">as</span>
+</a>
 
     <nav
         class="header-user-menu"

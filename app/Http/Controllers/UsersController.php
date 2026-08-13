@@ -167,8 +167,6 @@ class UsersController extends Controller
                 ],
             ],
             [
-                'username.nullable'
-                    => 'ユーザー名を入力してください。',
                 'username.max'
                     => 'ユーザー名は12文字以内で入力してください。',
                 'email.required'
@@ -191,8 +189,7 @@ class UsersController extends Controller
                     => '画像ファイルを選択してください。',
                 'icon_image.mimes'
                     => '画像はjpg、jpeg、png、bmp、gif、svg形式を選択してください。',
-                'new_password.nullable'
-                    => 'パスワードを入力してください。',
+
             ]
         );
 
@@ -221,10 +218,6 @@ class UsersController extends Controller
         $user->save();
 
         return redirect()
-            ->to('/user/profile/' . $user->id)
-            ->with(
-                'success',
-                'プロフィールを更新しました。'
-            );
+            ->to('/user/profile/' . $user->id);
     }
 }

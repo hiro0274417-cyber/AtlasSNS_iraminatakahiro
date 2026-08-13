@@ -22,13 +22,13 @@
 
     <div class="main-container">
 
-        @include('components.sidebar')
+    <main class="content">
+        @yield('content')
+    </main>
 
-        <main class="content">
-            @yield('content')
-        </main>
+    @include('components.sidebar')
 
-    </div>
+</div>
 
     <script src="{{ asset('js/app.js') }}"></script>
 

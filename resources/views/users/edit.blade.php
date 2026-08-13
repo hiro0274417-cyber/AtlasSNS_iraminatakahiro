@@ -4,9 +4,6 @@
 
 <div class="profile-edit-page">
 
-    <h1 class="profile-edit-title">
-        プロフィール編集
-    </h1>
 
     @if ($errors->any())
         <div class="validation-errors">
@@ -17,31 +14,21 @@
     @endif
 
     <form
+
+
         action="{{ url('/profile/update') }}"
         method="POST"
         enctype="multipart/form-data"
         class="profile-edit-form"
     >
         @csrf
-
-        <div class="profile-edit-row">
-         <label for="icon_image">
-            アイコン画像
-        </label>
-
+        <div class="profile-edit-user-icon">
             <img
                 src="{{ $user->icon_image_url }}"
                 alt="{{ $user->username }}のアイコン"
-                class="profile-edit-icon"
             >
+        </div>
 
-            <input
-                type="file"
-                id="icon_image"
-                name="icon_image"
-                accept=".jpg,.jpeg,.png,.bmp,.gif,.svg"
-            >
-            </div>
 
         <div class="profile-edit-row">
             <label for="username">
@@ -69,17 +56,6 @@
             >
         </div>
 
-        <div class="profile-edit-row">
-            <label for="bio">
-                自己紹介文
-            </label>
-
-            <textarea
-                id="bio"
-                name="bio"
-                rows="5"
-            >{{ old('bio', $user->bio) }}</textarea>
-        </div>
 
         <div class="profile-edit-row">
             <label for="newPassword">
@@ -104,6 +80,35 @@
                 id="newPasswordConfirmation"
                 name="new_password_confirmation"
                 autocomplete="new-password"
+            >
+        </div>
+
+                <div class="profile-edit-row">
+            <label for="bio">
+                自己紹介文
+            </label>
+
+            <textarea
+                id="bio"
+                name="bio"
+            >{{ old('bio', $user->bio) }}</textarea>
+        </div>
+
+        <div class="profile-edit-row">
+            <label for="icon_image">
+                アイコン画像
+            </label>
+
+            <label for="icon_image" class="icon-image-select">
+                ファイルを選択
+            </label>
+
+            <input
+                type="file"
+                id="icon_image"
+                name="icon_image"
+                accept=".jpg,.jpeg,.png,.bmp,.gif,.svg"
+                class="icon-image-input"
             >
         </div>
 

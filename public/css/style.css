@@ -81,7 +81,18 @@
 }
 
 .user-search-button {
-  padding: 10px 20px;
+  width: 45px;
+  height: 45px;
+  padding: 8px;
+  border: 0;
+  background: #186ac9;
+  cursor: pointer;
+}
+
+.user-search-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .search-keyword {
@@ -362,6 +373,8 @@
   text-align: center;
 }
 
+/* プロフィール */
+
 .profile-edit-page {
   width: 100%;
 }
@@ -370,9 +383,25 @@
   margin-bottom: 30px;
 }
 
+.profile-edit-user-icon {
+  position: absolute;
+  left: -70px;
+  top: 70px;
+}
+
+.profile-edit-user-icon img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .profile-edit-form {
   width: 100%;
   max-width: 700px;
+  margin: 0 auto;
+  padding-top: 70px;
+  position: relative;
 }
 
 .profile-edit-row {
@@ -388,14 +417,24 @@
 }
 
 .profile-edit-row input,
-.profile-edit-row textarea {
+.profile-edit-row textarea,
+.profile-edit-row .icon-image-select {
   flex: 1;
   padding: 10px;
 }
 
+.profile-edit-row textarea {
+  height: 65px;
+  resize: none;
+  box-sizing: border-box;
+}
+
 .profile-update-button {
-  margin-top: 20px;
-  padding: 12px 30px;
+  display: block;
+  width: 210px;
+  margin: 55px auto 0;
+  background: #ed3a50;
+  color: #fff;
 }
 
 .auth-page {
@@ -466,10 +505,9 @@
   display: inline-block;
 }
 
-
 .sidebar-menu {
   margin: 0;
-  padding: 0;
+  padding: 30px 0 0;
   list-style: none;
 }
 
@@ -547,31 +585,82 @@
   transform: rotate(225deg);
 }
 
-.sidebar {
-  width: 220px;
-  padding: 20px;
-  box-sizing: border-box;
-  border-right: 1px solid #ddd;
+.main-container {
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 100px);
 }
 
-.sidebar-status {
+.content {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  padding: 25px 18px;
+  box-sizing: border-box;
+  border-left: 1px solid #999;
+}
+
+.sidebar-username {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #999;
+}
+
+.sidebar-count-block:last-of-type {
+  padding-bottom: 25px;
+  border-bottom: 1px solid #999;
+}
+
+.sidebar-count-block p {
+  display: grid;
+  align-items: center;
   margin-bottom: 20px;
 }
 
-.sidebar-status p {
-  margin-bottom: 10px;
+.sidebar-count-block p span:first-child {
+  width: 110px;
 }
 
+.sidebar-count-block p span:last-child {
+  width: 45px;
+  text-align: center;
+}
+
+.sidebar-count-block a {
+  width: 135px;
+  margin-left: auto;
+  padding: 10px 8px;
+}
+
+.sidebar-count-block a {
+  width: 135px;
+  margin-left: auto;
+  padding: 10px 8px;
+}
+
+
 .sidebar-menu li {
-  margin-bottom: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .sidebar-menu a {
   display: block;
-  padding: 10px 12px;
-  color: #333;
+  width: 145px;
+  margin: 0 auto;
+  padding: 10px 8px;
+  box-sizing: border-box;
+  background: #186ac9;
+  color: #fff;
+  text-align: center;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 .sidebar-menu a:hover {
@@ -591,13 +680,13 @@
 }
 
 .sidebar-count-block {
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 }
 
 .sidebar-count-block p {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .sidebar-count-block a {
@@ -615,4 +704,59 @@
 
 .delete-btn:hover {
   filter: brightness(0) invert(1);
+}
+
+.icon-image-select {
+  width: 100%;
+  height: 160px;
+  box-sizing: border-box;
+  border: 1px solid #999;
+  background: #eee;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.icon-image-select::before {
+  content: "ファイルを選択";
+  padding: 10px 45px;
+  background: #fff;
+  color: #aaa;
+  font-size: 20px;
+}
+
+.icon-image-select {
+  font-size: 0;
+}
+
+.icon-image-input {
+  display: none;
+}
+
+.header {
+  width: 100%;
+  height: 100px;
+  padding: 0 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0d6fc6;
+}
+
+.header-logo img {
+  display: block;
+  width: 120px;
+  height: auto;
+}
+
+.header-user-menu {
+  margin-left: auto;
+}
+
+.menu-title {
+  color: #fff;
 }

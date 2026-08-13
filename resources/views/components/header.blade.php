@@ -1,9 +1,8 @@
 <header class="header">
 
         <a href="{{ url('/top') }}" class="atlas-logo">
-    <span class="atlas-logo-bold">Atl</span><span class="atlas-logo-light">as</span>
-</a>
-
+            <img src="{{ asset('images/atlas-logo.png') }}" alt="Atlas">
+        </a>
     <nav
         class="header-user-menu"
         aria-label="ユーザーメニュー"

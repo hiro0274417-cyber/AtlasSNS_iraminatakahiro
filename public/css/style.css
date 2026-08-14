@@ -607,82 +607,71 @@
 }
 
 .post-box {
-  display: grid;
-  grid-template-columns: 55px minmax(0, 1fr) 150px;
-  column-gap: 18px;
-  width: 100%;
-  min-height: 120px;
-  height: auto;
-  padding: 18px 30px 35px 85px;
-  box-sizing: border-box;
-  border-bottom: 1px solid #bbb;
   position: relative;
+  display: flex;
+  align-items: flex-start;
+
+  width: 100%;
+  min-height: 110px;
+  height: auto;
+
+  padding: 18px 120px 28px 90px;
+  box-sizing: border-box;
+
+  border: none;
+  border-bottom: 1px solid #bbb;
 }
 
-
-/* 左上のユーザーアイコン */
+/* アイコン */
 .post-box>a {
-  grid-column: 1;
-  grid-row: 1 / span 2;
+  flex-shrink: 0;
+  margin-right: 15px;
 }
 
-.post-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* 投稿本文エリア */
 .post-main {
   flex: 1;
   min-width: 0;
-  width: 100%;
 }
 
-/* 名前＋時間 */
-.post-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-/* ユーザー名 */
 .post-username {
+  display: block;
   margin: 0;
   padding: 0;
+  font-size: 14px;
   color: #333;
   text-decoration: none;
 }
 
-/* 投稿日時：右上 */
-.post-date {
-  margin: 0;
-  white-space: nowrap;
-}
-
-/* 投稿内容 */
 .post-text {
-  margin: 8px 0 0;
+  margin: 7px 0 0;
   padding: 0;
-  max-width: 700px;
+
+  max-width: 650px;
+
   font-size: 13px;
+  font-weight: 400;
   line-height: 1.6;
+
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  word-break: break-word;
 }
 
-/* 編集・削除：右下 */
+/* 時間 */
 .post-date {
+  position: absolute;
+  top: 18px;
+  right: 25px;
+
   margin: 0;
-  white-space: nowrap;
+  font-size: 12px;
 }
 
+/* 編集・削除 */
 .post-actions {
   position: absolute;
-  right: 30px;
+  right: 25px;
   bottom: 15px;
+
   display: flex;
   gap: 10px;
 }

@@ -53,6 +53,9 @@ class PostsController extends Controller
         ]);
 
 
+        return redirect()->route('top');
+
+
     }
 
     /**
@@ -83,6 +86,8 @@ class PostsController extends Controller
             'post' => $validated['post'],
         ]);
 
+        return redirect()->route('top');
+
 
     }
 
@@ -109,5 +114,9 @@ class PostsController extends Controller
 
         $post->delete();
 
+
+        return redirect()->route('top');
+
     }
+
 }

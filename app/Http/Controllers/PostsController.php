@@ -52,9 +52,7 @@ class PostsController extends Controller
             'post' => $validated['post'],
         ]);
 
-        return redirect()
-            ->route('top')
-            ->with('success', '投稿しました。');
+
     }
 
     /**
@@ -85,9 +83,7 @@ class PostsController extends Controller
             'post' => $validated['post'],
         ]);
 
-        return redirect()
-            ->route('top')
-            ->with('success', '投稿を更新しました。');
+
     }
 
     /**
@@ -113,8 +109,5 @@ class PostsController extends Controller
 
         $post->delete();
 
-        return redirect()
-            ->route('top')
-            ->with('success', '投稿を削除しました。');
     }
 }

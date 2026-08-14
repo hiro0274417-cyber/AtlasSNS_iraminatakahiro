@@ -520,19 +520,19 @@
 }
 
 /* メニューリスト */
-
 .menu-list {
   display: none;
   position: absolute;
-  top: 100%;
-  right: 0;
-  width: 260px;
+  top: calc(100% + 20px);
+  right: -15px;
+  width: 330px;
+  /*↑アコーディオンメニュー横幅*/
   margin: 0;
   padding: 0;
   list-style: none;
   background: #fff;
-  z-index: 1000;
-  border: 1px solid #0d3f8f;
+  z-index: 2000;
+  border: 1px solid #999;
 }
 
 .menu-list.is-open {
@@ -553,7 +553,8 @@
 .menu-list a,
 .menu-list button {
   display: block;
-  padding: 22px 10px;
+  padding: 33px 10px;
+  /*↑アコーディオンメニュー縦幅*/
   border: 0;
   background: #fff;
   color: #888;
@@ -595,6 +596,160 @@
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
+}
+
+/* =========================
+   TOP 投稿一覧
+========================= */
+
+.post-list {
+  width: 100%;
+}
+
+/* 投稿1件 */
+.post-box {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  min-height: 150px;
+  padding: 20px 25px 25px 180px;
+  border-bottom: 1px solid #bdbdbd;
+  box-sizing: border-box;
+}
+
+/* 左上のユーザーアイコン */
+.post-box>a {
+  position: absolute;
+  top: 18px;
+  left: 140px;
+}
+
+.post-icon {
+  display: block;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 投稿本文エリア */
+.post-main {
+  width: 100%;
+  min-width: 0;
+  padding-left: 15px;
+}
+
+/* 名前＋時間 */
+.post-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* ユーザー名 */
+.post-username {
+  margin: 0;
+  padding: 0;
+  color: #333;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+/* 投稿日時：右上 */
+.post-date {
+  margin: 0;
+  font-size: 12px;
+  color: #444;
+  white-space: nowrap;
+}
+
+/* 投稿内容 */
+.post-text {
+  margin: 8px 100px 0 0;
+  padding: 0;
+  text-indent: 0;
+
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* 編集・削除：右下 */
+.post-actions {
+  position: absolute;
+  right: 25px;
+  bottom: 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 編集・削除ボタン */
+.edit-btn,
+.delete-btn {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+
+/* 投稿フォーム大きさ高さ */
+.post-create-area {
+  min-height: 150px;
+  padding: 20px 65px;
+  box-sizing: border-box;
+  border-top: 6px solid #ddd;
+  border-bottom: 6px solid #ddd;
+}
+
+.post-create-form {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 110px;
+  position: relative;
+}
+
+.post-create-textarea {
+  flex: 1;
+  height: 105px;
+  padding: 12px 20px;
+  border: 0;
+  outline: 0;
+  resize: none;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+/* 投稿ボタン配置場所 */
+.post-create-button {
+  position: absolute;
+  right: 80px;
+  bottom: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 6px;
+  border: 0;
+  background: #186ac9;
+  cursor: pointer;
+}
+
+.post-create-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.edit-btn img,
+.delete-btn img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .header-user-icon {
@@ -800,8 +955,8 @@
 }
 
 .header-user-menu {
+  position: relative;
   margin-left: auto;
-  margin-right: 20px;
 }
 
 .menu-title {

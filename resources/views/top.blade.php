@@ -14,12 +14,6 @@
         </div>
     @endif
 
-    {{-- 投稿完了メッセージ --}}
-    @if (session('success'))
-        <p class="success-message">
-            {{ session('success') }}
-        </p>
-    @endif
 
     <form action="{{ url('/post/create') }}" method="POST" class="post-create-form">
         @csrf

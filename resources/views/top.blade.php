@@ -75,9 +75,7 @@
                 </div>
 
                 {{-- 投稿内容 --}}
-                <p class="post-text">
-                    {{ $post->post }}
-                </p>
+                <p class="post-text">{{ $post->post }}</p>
             </div>
 
             {{-- 自分の投稿だけ操作可能 --}}
@@ -100,9 +98,18 @@
                         class="delete-btn"
                         data-id="{{ $post->id }}"
                     >
-                        <img src="{{ asset('images/trash.png') }}" alt="削除">
-                    </button>
+                        <img
+                            src="{{ asset('images/trash.png') }}"
+                            alt="削除"
+                            class="trash-normal"
+                        >
 
+                        <img
+                            src="{{ asset('images/trash-hover.png') }}"
+                            alt=""
+                            class="trash-hover"
+                        >
+                    </button>
 
                 </div>
             @endif

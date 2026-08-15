@@ -107,3 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
     deleteModal?.classList.remove('is-open');
   });
 });
+
+// クリック時反転
+
+document.querySelectorAll('.delete-btn').forEach((button) => {
+  button.addEventListener('click', function () {
+    this.classList.toggle('is-reversed');
+  });
+});

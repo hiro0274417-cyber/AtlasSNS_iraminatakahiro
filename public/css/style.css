@@ -695,22 +695,36 @@
 .delete-btn {
   padding: 0;
   border: 0;
+  border-radius: 4px;
   background: transparent;
+  cursor: pointer;
+}
 
-  .delete-btn {
-    position: relative;
-    width: 42px;
-    height: 42px;
+.edit-btn img,
+.delete-btn img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  object-fit: contain;
+}
 
-    padding: 0;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-  }
+.delete-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+
+  background: url("../images/trash.png") center / 32px 32px no-repeat;
 
   cursor: pointer;
 }
 
+/* クリック後の反転状態 */
+.delete-btn.is-reversed {
+  background-image: url("../images/trash-hover.png");
+}
 
 /* 投稿フォーム大きさ高さ */
 .post-create-area {
@@ -753,10 +767,10 @@
   right: 80px;
   bottom: 8px;
 
-  width: 42px;
-  height: 42px;
-  padding: 6px;
-
+  width: 36px;
+  height: 36px;
+  padding: 1px;
+  border-radius: 4px;
   border: 0;
   background: #186ac9;
   cursor: pointer;
@@ -770,10 +784,6 @@
 
 .delete-btn img {
   display: block;
-}
-
-.delete-btn:hover img {
-  content: url("../images/trash-hover.png");
 }
 
 .edit-btn img,
@@ -926,10 +936,6 @@
   object-fit: cover;
   border-radius: 50%;
   flex-shrink: 0;
-}
-
-.delete-btn:hover {
-  filter: brightness(0) invert(1);
 }
 
 .icon-image-select {

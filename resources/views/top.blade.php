@@ -98,18 +98,9 @@
                         class="delete-btn"
                         data-id="{{ $post->id }}"
                     >
-                        <img
-                            src="{{ asset('images/trash.png') }}"
-                            alt="削除"
-                            class="trash-normal"
-                        >
 
-                        <img
-                            src="{{ asset('images/trash-hover.png') }}"
-                            alt=""
-                            class="trash-hover"
-                        >
                     </button>
+
 
                 </div>
             @endif
@@ -172,7 +163,7 @@
     <div class="modal-content delete-modal-content">
 
         <p class="delete-confirm-message">
-            この投稿を削除しますか？
+            この投稿を削除します。よろしいでしょうか？
         </p>
 
         <form action="{{ url('/post/delete') }}" method="POST">

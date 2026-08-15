@@ -108,10 +108,36 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// クリック時反転
+// 削除ボタン　ホバー反転
+const deleteModal = document.getElementById('deleteModal');
+const deletePostId = document.getElementById('deletePostId');
+const closeDeleteModal = document.getElementById('closeDeleteModal');
+const deleteButtons = document.querySelectorAll('.delete-btn');
 
-document.querySelectorAll('.delete-btn').forEach((button) => {
-  button.addEventListener('click', function () {
-    this.classList.toggle('is-reversed');
+let activeDeleteButton = null;
+
+deleteButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    if (!deleteModal || !deletePostId) {
+      return;
+    }
+
+    deletePostId.value = button.dataset.id ?? '';
+
+    activeDeleteButton = button;
+    activeDeleteButton.classList.add('is-reversed');
+
+    deleteModal.classList.add('is-open');
   });
 });
+
+if (closeDeleteModal && deleteModal) {
+  closeDeleteModal.addEventListener('click', () => {
+    deleteModal.classList.remove('is-open');
+
+    if (activeDeleteButton) {
+      activeDeleteButton.classList.remove('is-reversed');
+      activeDeleteButton = null;
+    }
+  });
+}

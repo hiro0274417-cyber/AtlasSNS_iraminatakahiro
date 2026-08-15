@@ -178,7 +178,7 @@
             <div class="delete-modal-actions">
 
                 <button type="submit" class="delete-confirm-btn">
-                    削除する
+                    OK
                 </button>
 
                 <button

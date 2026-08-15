@@ -37,9 +37,67 @@
   margin-top: 15px;
 }
 
+/* モーダル表示画面 */
 .delete-modal-content {
-  max-width: 420px;
-  text-align: center;
+  position: relative;
+  width: 380px;
+  height: 130px;
+  padding: 18px 22px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 0;
+}
+
+#deleteModal {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 0;
+  padding-left: 400px;
+  background: transparent;
+}
+
+/* 削除メッセージ */
+.delete-confirm-message {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 1.2;
+  text-align: left;
+}
+
+/* ボタンの配列 */
+.delete-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: absolute;
+  right: 20px;
+  bottom: 16px;
+}
+
+/* OKボタン */
+.delete-confirm-btn {
+  width: 90px;
+  height: 36px;
+  border: 0;
+  border-radius: 7px;
+  background: #7f9edc;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* キャンセルボタン */
+.delete-modal-actions .modal-close-btn {
+  width: 90px;
+  height: 36px;
+  border: 2px solid #222;
+  border-radius: 7px;
+  background: #fff;
+  color: #222;
+  font-size: 13px;
+  cursor: pointer;
 }
 
 .delete-confirm-message {

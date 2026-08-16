@@ -60,17 +60,17 @@ class User extends Authenticatable
 
     public function getIconImageUrlAttribute(): string
 {
-    // アイコン未設定ならデフォルト画像
-    if (empty($this->icon_image)) {
+    if (
+        empty($this->icon_image) ||
+        $this->icon_image === 'icon1.png'
+    ) {
         return asset('images/no-image.png');
     }
 
-    // アップロード済み画像
     if (str_starts_with($this->icon_image, '/storage/')) {
         return $this->icon_image;
     }
 
-    // public/images 内の画像
     return asset('images/' . $this->icon_image);
 }
 }

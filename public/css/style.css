@@ -406,35 +406,56 @@
 }
 
 .user-profile-header {
+  position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 25px;
-  padding: 25px 0;
-  border-bottom: 1px solid #ddd;
+
+  min-height: 170px;
+  padding: 35px 30px 30px 110px;
+  box-sizing: border-box;
+
+  border-bottom: 6px solid #ddd;
 }
 
 .user-profile-icon {
-  width: 90px;
-  height: 90px;
+  width: 50px;
+  height: 50px;
+
+  margin-right: 30px;
+
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .user-profile-information {
-  flex: 1;
-  min-width: 0;
+  width: 520px;
 }
 
-.user-profile-name-row {
+.user-profile-row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  align-items: flex-start;
+
+  margin-bottom: 22px;
 }
 
-.user-profile-name {
-  margin: 0;
-  font-size: 24px;
+.user-profile-label {
+  width: 140px;
+
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.user-profile-value {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.user-profile-action {
+  position: absolute;
+
+  right: 20px;
+  bottom: 25px;
 }
 
 .user-profile-action form {
@@ -465,17 +486,26 @@
 }
 
 .user-profile-post-box {
+  position: relative;
   display: flex;
-  gap: 15px;
-  padding: 20px 0;
-  border-bottom: 1px solid #ddd;
+  align-items: flex-start;
+
+  min-height: 100px;
+  padding: 18px 80px 10px 120px;
+
+  box-sizing: border-box;
+  border-bottom: 1px solid #aaa;
 }
 
 .user-profile-post-icon {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
+
+  margin-right: 18px;
+
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .user-profile-post-main {
@@ -497,17 +527,24 @@
 }
 
 .user-profile-post-name {
-  font-weight: bold;
+  margin: 0;
+  font-size: 14px;
 }
 
 .user-profile-post-date {
-  font-size: 13px;
+  position: absolute;
+
+  top: 18px;
+  right: 55px;
+
+  margin: 0;
+  font-size: 12px;
 }
 
 .user-profile-post-text {
-  margin-top: 12px;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .user-profile-no-post {
@@ -944,8 +981,8 @@
 }
 
 .user-profile-icon {
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   max-width: 80px;
   max-height: 80px;
   border-radius: 50%;
@@ -1373,8 +1410,8 @@
 .search-user-profile {
   display: flex;
   align-items: center;
-
-  width: 300px;
+  transform: translateX(50px);
+  width: 200px;
 
   color: #333;
   text-decoration: none;
@@ -1385,7 +1422,7 @@
   width: 50px;
   height: 50px;
 
-  margin-right: 40px;
+  margin-right: 30px;
 
   border-radius: 50%;
   object-fit: cover;
@@ -1393,13 +1430,13 @@
 
 /* ユーザー名 */
 .search-user-name {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /* フォローボタン部分 */
 .search-user-action {
-  width: 160px;
-  margin-left: 40px;
+  width: 180px;
+  margin-left: 0px;
 }
 
 /* フォローする */

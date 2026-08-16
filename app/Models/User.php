@@ -58,15 +58,19 @@ class User extends Authenticatable
         return $this->hasMany(Post::class, 'user_id');
     }
 
-    /**
-     *アイコンURL
-     */
     public function getIconImageUrlAttribute(): string
-    {
-        if (str_starts_with($this->icon_image, '/storage/')) {
-            return $this->icon_image;
-        }
-
-        return asset('images/' . $this->icon_image);
+{
+    // アイコン未設定ならデフォルト画像
+    if (empty($this->icon_image)) {
+        return asset('images/no-image.png');
     }
+
+    // アップロード済み画像
+    if (str_starts_with($this->icon_image, '/storage/')) {
+        return $this->icon_image;
+    }
+
+    // public/images 内の画像
+    return asset('images/' . $this->icon_image);
+}
 }

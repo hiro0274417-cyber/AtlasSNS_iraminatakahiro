@@ -9,29 +9,42 @@
     >
 
     <title>登録完了</title>
-
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+             <link rel="stylesheet" href="{{ asset('css/logout.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
 
 <body class="auth-page">
 
-    <main class="auth-container">
+    <div class="auth-brand">
+        <img
+            src="{{ asset('images/atlas-logo.png') }}"
+            alt="Atlas"
+            class="auth-brand-logo"
+        >
 
-        <h1 class="auth-title">
-            {{ session('username') }}さん
-            <br>
-            ようこそ！AtlasSNSへ
+        <div class="auth-brand-subtitle">
+            Social Network Service
+        </div>
+    </div>
+
+    <main class="auth-container added-container">
+
+        <h1 class="added-title">
+          <strong>{{ session('username') }}</strong>さん
+          <br>
+         ようこそ！AtlasSNSへ
         </h1>
 
-        <p>
+        <p class="added-message">
             ユーザー登録が完了いたしました。
             <br>
             早速ログインをしてみましょう！
         </p>
-        <p class="auth-link">
+
+        <p class="added-login">
             <a href="{{ url('/login') }}">
-                ログインページへ
+                ログイン画面へ
             </a>
         </p>
 

@@ -8,14 +8,25 @@
     >
 
     <title>新規ユーザー登録</title>
-
+    <link rel="stylesheet" href="{{ asset('css/logout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body class="auth-page">
+    <div class="auth-brand">
+    <img
+        src="{{ asset('images/atlas-logo.png') }}"
+        alt="Atlas"
+        class="auth-brand-logo"
+    >
 
-    <main class="auth-container">
+    <div class="auth-brand-subtitle">
+        Social Network Service
+    </div>
+</div>
+
+   <main class="auth-container register-container">
 
         <h1 class="auth-title">
             新規ユーザー登録

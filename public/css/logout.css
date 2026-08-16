@@ -130,3 +130,80 @@
 
   white-space: nowrap;
 }
+
+.register-container {
+  width: 330px;
+  padding: 20px 24px 38px;
+
+  transform: translateY(100px);
+}
+
+.register-container .auth-form-row {
+  margin-bottom: 13px;
+}
+
+.register-container .auth-submit-button {
+  margin: 8px 0 25px auto;
+}
+
+.added-container {
+  width: 300px;
+  min-height: 260px;
+
+  padding: 28px 35px 35px;
+
+  transform: translateY(75px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.added-title {
+  width: 100%;
+
+  margin: 0 0 45px;
+
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.added-title strong {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.added-message {
+  width: 100%;
+
+  margin: 0 0 30px;
+
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.added-login {
+  width: 100%;
+
+  margin: 0;
+  text-align: center;
+}
+
+.added-login a {
+  display: inline-block;
+
+  padding: 11px 20px;
+
+  border-radius: 6px;
+
+  background: #f2384a;
+  color: #fff;
+
+  font-size: 14px;
+  text-decoration: none;
+}

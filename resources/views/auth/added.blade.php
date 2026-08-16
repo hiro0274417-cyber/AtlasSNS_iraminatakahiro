@@ -9,9 +9,10 @@
     >
 
     <title>登録完了</title>
-             <link rel="stylesheet" href="{{ asset('css/logout.css') }}">
+
         <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/logout.css') }}">
     </head>
 
 <body class="auth-page">

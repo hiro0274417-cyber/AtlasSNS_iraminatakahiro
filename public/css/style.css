@@ -287,20 +287,43 @@
 }
 
 .connection-list-page {
+  position: relative;
   width: 100%;
 }
 
 .connection-list-title {
-  margin-bottom: 25px;
+  float: left;
+  margin: 35px 0 0 75px;
+  font-size: 22px;
+  font-weight: 400;
 }
 
 .connection-user-icons {
+  position: relative;
+
+  min-height: 145px;
+  margin-left: 260px;
+  padding: 20px 30px 20px 0;
+
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  min-height: 70px;
-  padding: 20px 0;
-  border-bottom: 1px solid #ddd;
+  align-content: flex-start;
+  gap: 8px;
+
+  box-sizing: border-box;
+  border-bottom: none;
+}
+
+.connection-user-icons::after {
+  content: "";
+  position: absolute;
+
+  left: -260px;
+  right: 0;
+  bottom: 0;
+
+  height: 6px;
+  background: #ddd;
 }
 
 .connection-user-link {
@@ -308,8 +331,8 @@
 }
 
 .connection-user-icon {
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -326,33 +349,28 @@
 }
 
 .connection-post-box {
-  display: flex;
-  gap: 15px;
-  padding: 20px 0;
-  border-bottom: 1px solid #ddd;
-}
+  position: relative;
 
-.connection-post-user {
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
-  color: #333;
-  text-decoration: none;
+
+  width: 100%;
+  min-height: 125px;
+
+  padding: 20px 90px;
+  box-sizing: border-box;
+
+  border-bottom: 1px solid #aaa;
 }
 
-.connection-post-icon {
-  width: 50px;
-  height: 50px;
-  margin: 0 18px 0 0;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-}
+
 
 .connection-post-username {
   display: block;
-  margin: 5px 0 0;
-  font-size: 13px;
+  margin: 3px 0 0;
+  padding: 0;
+  color: #333;
+  font-size: 14px;
   font-weight: 400;
   white-space: nowrap;
 }
@@ -365,13 +383,21 @@
 }
 
 .connection-post-date {
-  margin: 0 0 10px;
-  font-size: 13px;
-  text-align: right;
+  position: absolute;
+  top: 20px;
+  right: 35px;
+
+  margin: 0;
+  font-size: 12px;
 }
 
 .connection-post-text {
-  margin: 0;
+  margin: 6px 0 0;
+  padding: 0;
+
+  font-size: 13px;
+  line-height: 1.5;
+
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -1199,7 +1225,7 @@
   width: 100%;
   min-height: 125px;
 
-  padding: 20px 90px;
+  padding: 20px 90px 20px 140px;
   box-sizing: border-box;
 
   border-bottom: 1px solid #aaa;
@@ -1207,24 +1233,22 @@
 
 /* アイコン＋ユーザー名 */
 .connection-post-user {
-  display: flex;
-  align-items: flex-start;
-
+  display: block;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
   color: #333;
   text-decoration: none;
 }
 
 /* 投稿者アイコン */
 .connection-post-icon {
+  display: block;
   width: 50px;
   height: 50px;
-
-  margin-right: 18px;
-
+  margin: 0 18px 0 0;
   border-radius: 50%;
   object-fit: cover;
-
-  flex-shrink: 0;
 }
 
 /* ユーザー名 */
@@ -1240,18 +1264,12 @@
 
 
 /* 投稿本文側 */
-.connection-post-main {
-  flex: 1;
-  min-width: 0;
-}
 
 /* 本文 */
 .connection-post-text {
-  margin: 40px 0 0 -30px;
-
+  margin: 6px 0 0;
   font-size: 13px;
   line-height: 1.5;
-
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }

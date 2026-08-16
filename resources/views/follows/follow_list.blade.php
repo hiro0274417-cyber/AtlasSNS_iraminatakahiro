@@ -36,43 +36,44 @@
 
         </div>
 
-     {{-- フォローしているユーザーの投稿 --}}
-        <div class="connection-post-list">
+    {{-- フォローしているユーザーの投稿 --}}
+    <div class="connection-post-list">
 
         @foreach ($posts as $post)
 
-        <div class="connection-post-box">
+            <div class="connection-post-box">
 
-            <a
-                href="{{ url('/user/profile/' . $post->user->id) }}"
-                class="connection-post-user"
-            >
-                <img
-                    src="{{ $post->user->icon_image_url }}"
-                    alt="{{ $post->user->username }}のアイコン"
-                    class="connection-post-icon"
+                <a
+                    href="{{ url('/user/profile/' . $post->user->id) }}"
+                    class="connection-post-user"
                 >
+                    <img
+                        src="{{ $post->user->icon_image_url }}"
+                        alt="{{ $post->user->username }}のアイコン"
+                        class="connection-post-icon"
+                    >
+                </a>
 
-                <span class="connection-post-username">
-                    {{ $post->user->username }}
-                </span>
-            </a>
+                <div class="connection-post-main">
 
-            <div class="connection-post-main">
+                    <a
+                        href="{{ url('/user/profile/' . $post->user->id) }}"
+                        class="connection-post-username"
+                    >
+                        {{ $post->user->username }}
+                    </a>
 
-                <p class="connection-post-date">
-                    {{ $post->created_at->format('Y-m-d H:i') }}
-                </p>
+                    <p class="connection-post-text">{{ $post->post }}</p>
 
-                <p class="connection-post-text">
-                    {{ $post->post }}
-                </p>
+                    <p class="connection-post-date">
+                        {{ $post->created_at->format('Y-m-d H:i') }}
+                    </p>
+
+                </div>
 
             </div>
 
-        </div>
-
-      @endforeach
+        @endforeach
 
     </div>
 </div>

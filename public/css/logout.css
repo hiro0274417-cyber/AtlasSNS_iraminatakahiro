@@ -103,14 +103,23 @@
 
 .auth-brand {
   position: absolute;
-
-  top: 180px;
   left: 50%;
-
   transform: translateX(-50%);
 
   text-align: center;
   color: #fff;
+}
+
+.login-brand {
+  top: 105px;
+}
+
+.register-brand {
+  top: 80px;
+}
+
+.added-brand {
+  top: 180px;
 }
 
 .auth-brand-logo {
@@ -135,7 +144,7 @@
   width: 330px;
   padding: 20px 24px 38px;
 
-  transform: translateY(150px);
+  transform: translateY(100px);
 }
 
 .register-container .auth-form-row {
@@ -151,7 +160,7 @@
   min-height: 260px;
   padding: 28px 20px 35px;
 
-  transform: translateY(75px);
+  transform: translateY(50px);
 
   display: flex;
   flex-direction: column;

@@ -94,8 +94,7 @@ class UsersController extends Controller
         ]);
 
         return redirect()
-            ->back()
-            ->with('success', 'フォローしました。');
+            ->back();
     }
 
     /**
@@ -110,8 +109,7 @@ class UsersController extends Controller
             ->delete();
 
         return redirect()
-            ->back()
-            ->with('success', 'フォローを解除しました。');
+            ->back();
     }
 
     /**

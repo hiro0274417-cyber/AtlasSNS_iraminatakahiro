@@ -17,7 +17,7 @@
 
 <body class="auth-page">
 
-    <div class="auth-brand">
+    <div class="auth-brand added-brand">
         <img
             src="{{ asset('images/atlas-logo.png') }}"
             alt="Atlas"

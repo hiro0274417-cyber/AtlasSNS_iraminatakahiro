@@ -24,28 +24,52 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'username' => [
-                'required',
-                'string',
-                'min:2',
-                'max:12',
-            ],
-            'email' => [
-                'required',
-                'email',
-                'min:5',
-                'max:40',
-                'unique:users,email',
-            ],
-            'password' => [
-                'required',
-                'alpha_num',
-                'min:8',
-                'max:20',
-                'confirmed',
-            ],
-        ]);
+        $validated = $request->validate(
+    [
+        'username' => [
+            'required',
+            'string',
+            'min:2',
+            'max:12',
+        ],
+        'email' => [
+            'required',
+            'email',
+            'min:5',
+            'max:40',
+            'unique:users,email',
+        ],
+        'password' => [
+            'required',
+            'alpha_num',
+            'min:8',
+            'max:20',
+            'confirmed',
+        ],
+        'password_confirmation' => [
+            'required',
+        ],
+    ],
+    [
+        'username.required' => 'ユーザー名を入力してください。',
+        'username.min' => 'ユーザー名は2文字以上で入力してください。',
+        'username.max' => 'ユーザー名は12文字以内で入力してください。',
+
+        'email.required' => 'メールアドレスを入力してください。',
+        'email.email' => '正しいメールアドレスを入力してください。',
+        'email.min' => 'メールアドレスは5文字以上で入力してください。',
+        'email.max' => 'メールアドレスは40文字以内で入力してください。',
+        'email.unique' => 'このメールアドレスはすでに使用されています。',
+
+        'password.required' => 'パスワードを入力してください。',
+        'password.alpha_num' => 'パスワードは半角英数字で入力してください。',
+        'password.min' => 'パスワードは8文字以上で入力してください。',
+        'password.max' => 'パスワードは20文字以内で入力してください。',
+        'password.confirmed' => 'パスワード確認と一致していません。',
+
+        'password_confirmation.required' => 'パスワード確認を入力してください。',
+    ]
+);
 
         $user = User::create([
             'username' => $validated['username'],

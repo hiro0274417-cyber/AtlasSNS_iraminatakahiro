@@ -15,7 +15,7 @@
 </head>
 
 <body class="auth-page">
-    <div class="auth-brand">
+    <div class="auth-brand register-brand">
     <img
         src="{{ asset('images/atlas-logo.png') }}"
         alt="Atlas"
@@ -33,14 +33,6 @@
             新規ユーザー登録
         </h1>
 
-        {{-- バリデーションエラー --}}
-        @if ($errors->any())
-            <div class="validation-errors">
-                @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                @endforeach
-            </div>
-        @endif
 
         <form
             action="{{ url('/register') }}"
@@ -62,6 +54,9 @@
                     value="{{ old('username') }}"
                     autocomplete="username"
                 >
+                @error('username')
+                    <p class="field-error">{{ $message }}</p>
+                @enderror
 
             </div>
 
@@ -77,7 +72,9 @@
                     name="email"
                     value="{{ old('email') }}"
                     autocomplete="email"
-                >
+                    >@error('email')
+                    <p class="field-error">{{ $message }}</p>
+                @enderror
 
             </div>
 
@@ -92,7 +89,9 @@
                     id="password"
                     name="password"
                     autocomplete="new-password"
-                >
+                >@error('password')
+                    <p class="field-error">{{ $message }}</p>
+                @enderror
 
             </div>
 
@@ -107,7 +106,9 @@
                     id="password_confirmation"
                     name="password_confirmation"
                     autocomplete="new-password"
-                >
+                >@error('password_confirmation')
+                    <p class="field-error">{{ $message }}</p>
+                @enderror
 
             </div>
 

@@ -18,7 +18,7 @@
 
 
 <body class="auth-page">
-<div class="auth-brand">
+<div class="auth-brand login-brand">
     <img
         src="{{ asset('images/atlas-logo.png') }}"
         alt="Atlas"
@@ -93,7 +93,7 @@
 
         <p class="auth-link">
             <a href="{{ url('/register') }}">
-                新規ユーザー登録はこちら
+                新規ユーザーの方はこちら
             </a>
         </p>
 

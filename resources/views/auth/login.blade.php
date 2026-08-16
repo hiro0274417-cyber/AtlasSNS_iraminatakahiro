@@ -9,12 +9,25 @@
     >
 
     <title>ログイン</title>
-
+    <link rel="stylesheet" href="{{ asset('css/logout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
     </head>
 
+
 <body class="auth-page">
+<div class="auth-brand">
+    <img
+        src="{{ asset('images/atlas-logo.png') }}"
+        alt="Atlas"
+        class="auth-brand-logo"
+    >
+
+    <div class="auth-brand-subtitle">
+        Social Network Service
+    </div>
+</div>
 
     <main class="auth-container">
 

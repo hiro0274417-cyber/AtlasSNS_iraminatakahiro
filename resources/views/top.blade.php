@@ -122,7 +122,7 @@
 {{-- 編集モーダル --}}
 <div id="editModal" class="modal">
 
-    <div class="modal-content">
+    <div class="edit-modal-content">
 
         <form action="{{ url('/post/update') }}" method="POST">
             @csrf
@@ -136,20 +136,14 @@
             <textarea
                 name="post"
                 id="editPostText"
+                class="edit-textarea"
                 maxlength="150"
             ></textarea>
 
-            <button type="submit" class="update-btn">
-                更新
+            <button type="submit" class="edit-submit-btn">
+                <img src="{{ asset('images/edit.png') }}" alt="編集">
             </button>
 
-            <button
-                type="button"
-                id="closeEditModal"
-                class="modal-close-btn"
-            >
-                キャンセル
-            </button>
         </form>
 
     </div>

@@ -1,14 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-
+use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\FollowsController;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | ログイン不要ルート（ログイン・新規登録）
@@ -18,9 +16,6 @@ use App\Http\Controllers\FollowsController;
 // ログイン画面
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->name('logout');
 
 
 // 新規登録
@@ -46,6 +41,10 @@ Route::middleware('auth')->group(function () {
 
     // トップページ
     Route::get('/top', [PostsController::class, 'index'])->name('top');
+
+    // ログアウト
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->name('logout');
 
     // 投稿機能
     Route::post('/post/create', [PostsController::class, 'create']);

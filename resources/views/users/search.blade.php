@@ -8,12 +8,6 @@
         ユーザー検索
     </h1>
 
-    {{-- 成功メッセージ --}}
-    @if (session('success'))
-        <p class="success-message">
-            {{ session('success') }}
-        </p>
-    @endif
 
     {{-- 検索フォーム --}}
     <form

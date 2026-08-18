@@ -58,26 +58,26 @@
 
 
         <div class="profile-edit-row">
-            <label for="newPassword">
+            <label for="new_Password">
                 パスワード
             </label>
 
             <input
                 type="password"
-                id="newPassword"
+                id="new_Password"
                 name="new_password"
                 autocomplete="new-password"
             >
         </div>
 
         <div class="profile-edit-row">
-            <label for="newPasswordConfirmation">
+            <label for="newPassword_Confirmation">
                 パスワード確認
             </label>
 
             <input
                 type="password"
-                id="newPasswordConfirmation"
+                id="new_Password_Confirmation"
                 name="new_password_confirmation"
                 autocomplete="new-password"
             >

@@ -50,12 +50,9 @@ class PostsController extends Controller
         Post::create([
             'user_id' => Auth::id(),
             'post' => $validated['post'],
-        ]);
+          ]);
 
-
-        return redirect()->route('top');
-
-
+         return redirect()->route('top');
     }
 
     /**
@@ -85,10 +82,7 @@ class PostsController extends Controller
         $post->update([
             'post' => $validated['post'],
         ]);
-
         return redirect()->route('top');
-
-
     }
 
     /**
@@ -98,7 +92,7 @@ class PostsController extends Controller
     {
         $validated = $request->validate(
             [
-                'id' => ['required', 'integer','exists:posts,id'],
+                'id' => ['required', 'integer', 'exists:posts,id'],
             ],
             [
                 'id.required' => '投稿IDがありません。',
@@ -113,10 +107,7 @@ class PostsController extends Controller
         }
 
         $post->delete();
-
-
         return redirect()->route('top');
-
     }
 
 }

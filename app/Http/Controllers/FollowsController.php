@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use App\Models\Post;
 
 class FollowsController extends Controller
 {
@@ -18,7 +18,7 @@ class FollowsController extends Controller
         ->with('followedUser')
         ->get();
 
-    $followed_user_ids = $followings
+    $followedUserIds = $followings
         ->pluck('followed_id');
 
     $posts = Post::with('user')
@@ -36,22 +36,22 @@ class FollowsController extends Controller
      * 自分をフォローしているユーザーと、その投稿を表示
      */
     public function followerList(): View
-{
-    $followers = Auth::user()
+    {
+        $followers = Auth::user()
         ->followers()
         ->with('followingUser')
         ->get();
 
-    $follower_user_ids = $followers->pluck('following_id');
+    $followerUserIds = $followers->pluck('following_id');
 
     $posts = Post::with('user')
         ->whereIn('user_id', $follower_user_ids)
         ->orderByDesc('created_at')
         ->get();
 
-    return view(
-    'follows.follower_list',
-    compact('followers', 'posts')
-    );
+        return view(
+            'follows.follower_list',
+            compact('followers', 'posts')
+        );
     }
 }

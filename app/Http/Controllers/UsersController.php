@@ -94,7 +94,8 @@ class UsersController extends Controller
         ]);
 
         return redirect()
-            ->back();
+            ->back()
+;
     }
 
     /**
@@ -159,9 +160,9 @@ class UsersController extends Controller
                     'confirmed',
                 ],
                 'icon_image' => [
-                        'nullable',
-                        'file',
-                        'mimes:jpg,jpeg,png,bmp,gif,svg',
+                    'nullable',
+                    'file',
+                    'mimes:jpg,jpeg,png,bmp,gif,svg',
                 ],
             ],
             [
@@ -187,7 +188,6 @@ class UsersController extends Controller
                     => '画像ファイルを選択してください。',
                 'icon_image.mimes'
                     => '画像はjpg、jpeg、png、bmp、gif、svg形式を選択してください。',
-
             ]
         );
 

@@ -63,18 +63,17 @@
                         {{ $post->user->username }}
                     </a>
 
-                    <p class="connection-post-text">{{ $post->post }}
-                    </p>
+                    <p class="connection-post-text">{{ $post->post }}</p>
 
                     <p class="connection-post-date">
-                        {{ $post->created_at->format('Y-m-d H:i') }}
+                         {{ $post->created_at->format('Y-m-d H:i') }}
                     </p>
+
+                 </div>
 
             </div>
 
-        </div>
-
-        @endforeach
+         @endforeach
 
     </div>
 

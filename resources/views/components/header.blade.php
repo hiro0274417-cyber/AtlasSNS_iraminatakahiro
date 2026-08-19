@@ -7,18 +7,22 @@
         class="header-user-menu"
         aria-label="ユーザーメニュー"
     >
-        <button
-            type="button"
-            class="menu-title"
-            id="userMenuButton"
-            aria-controls="menuList"
-            aria-expanded="false"
-        >
-            <span>
+        <div class="menu-title">
+
+            <span class="header-user-name">
                 {{ Auth::user()->username }} さん
             </span>
 
-            <span class="menu-arrow" aria-hidden="true"></span>
+            <button
+                type="button"
+                class="menu-arrow-button"
+                id="userMenuButton"
+                aria-controls="menuList"
+                aria-expanded="false"
+                aria-label="メニューを開く"
+            >
+                <span class="menu-arrow" aria-hidden="true"></span>
+            </button>
 
             <span class="header-user-image">
                 <img
@@ -27,8 +31,7 @@
                     class="header-user-icon"
                 >
             </span>
-        </button>
-
+        </div>
         <ul id="menuList" class="menu-list">
 
             <li>

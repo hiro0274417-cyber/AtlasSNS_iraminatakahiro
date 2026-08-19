@@ -56,12 +56,9 @@
 
                 <div class="connection-post-main">
 
-                    <a
-                        href="{{ url('/user/profile/' . $post->user->id) }}"
-                        class="connection-post-username"
-                    >
+                    <span class="connection-post-username">
                         {{ $post->user->username }}
-                    </a>
+                    </span>
 
                     <p class="connection-post-text">{{ $post->post }}</p>
 

@@ -2,14 +2,8 @@
 
 @section('content')
 
-<div class="user-search-page">
+<div class="user-search-header">
 
-    <h1 class="user-search-title">
-        ユーザー検索
-    </h1>
-
-
-    {{-- 検索フォーム --}}
     <form
         action="{{ route('users.search') }}"
         method="GET"
@@ -28,13 +22,13 @@
         </button>
     </form>
 
-    {{-- 検索ワード --}}
     @if ($keyword !== '')
         <p class="search-keyword">
             検索ワード：{{ $keyword }}
         </p>
     @endif
 
+</div>
     {{-- ユーザー一覧 --}}
     <div class="search-user-list">
 
@@ -43,20 +37,23 @@
             <div class="search-user-box">
 
                 {{-- ユーザー情報 --}}
-                <a
-                    href="{{ url('/user/profile/' . $user->id) }}"
-                    class="search-user-profile"
+                <div class="search-user-profile">
+
+                <a href="{{ url('/user/profile/' . $user->id) }}"
+                    class="search-user-icon-link"
                 >
                     <img
                         src="{{ $user->icon_image_url }}"
                         alt="{{ $user->username }}のアイコン"
                         class="search-user-icon"
                     >
-
-                    <span class="search-user-name">
-                        {{ $user->username }}
-                    </span>
                 </a>
+
+                <span class="search-user-name">
+                    {{ $user->username }}
+                </span>
+
+            </div>
 
                 {{-- フォロー操作 --}}
                 <div class="search-user-action">
@@ -109,6 +106,5 @@
 
     </div>
 
-</div>
 
-@endsection
+    @endsection

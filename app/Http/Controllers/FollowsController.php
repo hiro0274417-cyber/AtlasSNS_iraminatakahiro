@@ -22,7 +22,7 @@ class FollowsController extends Controller
         ->pluck('followed_id');
 
     $posts = Post::with('user')
-        ->whereIn('user_id', $followed_user_ids)
+        ->whereIn('user_id', $followedUserIds)
         ->orderByDesc('created_at')
         ->get();
 
@@ -45,7 +45,7 @@ class FollowsController extends Controller
     $followerUserIds = $followers->pluck('following_id');
 
     $posts = Post::with('user')
-        ->whereIn('user_id', $follower_user_ids)
+        ->whereIn('user_id', $followerUserIds)
         ->orderByDesc('created_at')
         ->get();
 

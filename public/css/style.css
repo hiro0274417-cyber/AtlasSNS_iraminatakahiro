@@ -171,35 +171,10 @@
 }
 
 /* =========================
-   User Search
-========================= */
+    User Search
+  ========================= */
 .user-search-page {
   width: 100%;
-}
-
-.user-search-title {
-  margin-bottom: 25px;
-}
-
-.user-search-form {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 25px;
-}
-
-.user-search-input {
-  width: min(100%, 400px);
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.user-search-button {
-  width: 45px;
-  height: 45px;
-  padding: 8px;
-  border: 0;
-  background: #186ac9;
-  cursor: pointer;
 }
 
 .user-search-button img {
@@ -208,9 +183,6 @@
   object-fit: contain;
 }
 
-.search-keyword {
-  margin-bottom: 20px;
-}
 
 .search-user-list {
   width: 100%;
@@ -224,24 +196,13 @@
   padding: 15px 0;
 }
 
-.search-user-profile {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  gap: 15px;
-  color: inherit;
-  text-decoration: none;
-}
 
 .search-user-icon {
+  display: block;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
-}
-
-.search-user-name {
-  font-size: 16px;
 }
 
 .search-no-result {
@@ -252,6 +213,44 @@
 
 .search-user-action form {
   margin: 0;
+}
+
+.user-search-header {
+  display: flex;
+  align-items: center;
+  min-height: 180px;
+  padding: 0 70px;
+  border-bottom: 6px solid #ddd;
+  box-sizing: border-box;
+}
+
+.user-search-form {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0;
+}
+
+.user-search-input {
+  width: 370px;
+  height: 55px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+.user-search-button {
+  width: 55px;
+  height: 55px;
+  padding: 8px;
+  border: 0;
+  background: #186ac9;
+  cursor: pointer;
+}
+
+.search-keyword {
+  margin: 0 0 0 220px;
+  font-size: 20px;
 }
 
 /* =========================
@@ -949,9 +948,10 @@
   border: 0;
   background: transparent;
   color: #fff;
-  cursor: pointer;
   font-size: 24px;
   font-weight: 600;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .menu-arrow {
@@ -963,8 +963,33 @@
   transition: transform 0.2s ease;
 }
 
-.menu-title[aria-expanded="true"] .menu-arrow {
+.menu-arrow-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.menu-arrow-button[aria-expanded="true"] .menu-arrow {
   transform: rotate(225deg);
+}
+
+.header-user-name,
+.header-user-image {
+  user-select: none;
+  cursor: default;
+}
+
+.header-user-image img {
+  pointer-events: none;
 }
 
 /* サイドバー */
@@ -1126,9 +1151,6 @@
   margin-left: auto;
 }
 
-.menu-title {
-  color: #fff;
-}
 
 /* =========================
    フォロワーリスト
@@ -1287,12 +1309,9 @@
 .user-search-form {
   display: flex;
   align-items: center;
-
   height: 140px;
-
   padding-left: 60px;
   box-sizing: border-box;
-  border-bottom: 6px solid #ddd;
 }
 
 /* 検索入力欄 */
@@ -1362,11 +1381,20 @@
 .search-user-profile {
   display: flex;
   align-items: center;
-  transform: translateX(50px);
+  gap: 30px;
   width: 200px;
+}
 
-  color: #333;
-  text-decoration: none;
+.search-user-profile a {
+  display: inline-block;
+  flex: none;
+}
+
+.search-user-icon-link {
+  display: block;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
 }
 
 /* ユーザーアイコン */
@@ -1383,6 +1411,8 @@
 /* ユーザー名 */
 .search-user-name {
   font-size: 18px;
+  text-decoration: none;
+  color: #333;
 }
 
 /* フォローボタン部分 */

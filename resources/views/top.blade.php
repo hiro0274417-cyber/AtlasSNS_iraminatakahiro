@@ -62,11 +62,9 @@
 
                 <div class="post-header">
                     {{-- ユーザー名 --}}
-                    <a
-                        href="{{ url('/user/profile/' . $post->user->id) }}"
-                        class="post-username">
+                    <span class="post-username">
                         {{ $post->user->username }}
-                    </a>
+                    </span>
 
                     {{-- 投稿日時 --}}
                     <p class="post-date">
@@ -98,6 +96,7 @@
                         class="delete-btn"
                         data-id="{{ $post->id }}"
                     >
+
 
                     </button>
 

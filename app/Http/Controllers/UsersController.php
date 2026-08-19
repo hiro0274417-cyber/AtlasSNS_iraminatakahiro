@@ -166,6 +166,11 @@ class UsersController extends Controller
                 ],
             ],
             [
+
+                'username.required'
+                    => 'ユーザー名を入力してください。',
+                'username.min'
+                    => 'ユーザー名は2文字以上で入力してください。',
                 'username.max'
                     => 'ユーザー名は12文字以内で入力してください。',
                 'email.required'

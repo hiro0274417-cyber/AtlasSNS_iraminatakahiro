@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+body {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+}
+
+body {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+}
+
 /* =========================
    Modal
 ========================= */
@@ -1003,7 +1011,7 @@
   border-left: 1px solid #aaa;
   font-size: 14px;
   font-weight: 500;
-  letter-spacing: -2px;
+  letter-spacing: normal;
 
 }
 
@@ -1019,7 +1027,6 @@
 
 .sidebar-count-row {
   display: flex;
-  /* 「フォロー数」と「人数」を横並びにする */
   align-items: center;
   /* 文字の上下位置を揃える */
   gap: 60px;
@@ -1061,7 +1068,7 @@
   align-items: center;
   /* 文字を上下中央にする */
   justify-content: center;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
   font-weight: 400;
 }
 

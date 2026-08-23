@@ -154,11 +154,18 @@ class UsersController extends Controller
                 ],
                 'new_password' => [
                     'nullable',
+                     'required_with:new_password_confirmation',
                     'alpha_num',
                     'min:8',
                     'max:20',
                     'confirmed',
                 ],
+
+                    'new_password_confirmation' => [
+                    'nullable',
+                    'required_with:new_password',
+                ],
+
                 'icon_image' => [
                     'nullable',
                     'file',
@@ -193,6 +200,11 @@ class UsersController extends Controller
                     => '画像ファイルを選択してください。',
                 'icon_image.mimes'
                     => '画像はjpg、jpeg、png、bmp、gif、svg形式を選択してください。',
+                    'new_password.required_with'
+                    => '確認用パスワードを入力した場合は、パスワードも入力してください。',
+
+                'new_password_confirmation.required_with'
+                    => 'パスワードを入力した場合は、確認用パスワードも入力してください。',
             ]
         );
 

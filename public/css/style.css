@@ -1,11 +1,10 @@
 @charset "UTF-8";
 
 body {
+  background: #ffffff;
   font-family: Arial, "Helvetica Neue", sans-serif;
-}
 
-body {
-  font-family: Arial, "Helvetica Neue", sans-serif;
+  color: #333;
 }
 
 /* =========================
@@ -859,9 +858,9 @@ body {
   cursor: pointer;
 }
 
-/* クリック後の反転状態 */
-.delete-btn.is-reversed {
+.delete-btn:hover {
   background-image: url("../images/trash-hover.png");
+  /* カーソルを合わせている間だけ画像変更 */
 }
 
 /* 投稿フォーム大きさ高さ */

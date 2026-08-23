@@ -233,6 +233,6 @@ class UsersController extends Controller
         $user->save();
 
         return redirect()
-            ->to('/user/profile/' . $user->id);
+          ->to('/top');
     }
 }

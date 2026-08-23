@@ -114,7 +114,7 @@ const deletePostId = document.getElementById('deletePostId');
 const closeDeleteModal = document.getElementById('closeDeleteModal');
 const deleteButtons = document.querySelectorAll('.delete-btn');
 
-let activeDeleteButton = null;
+
 
 deleteButtons.forEach((button) => {
   button.addEventListener('click', () => {
@@ -124,8 +124,6 @@ deleteButtons.forEach((button) => {
 
     deletePostId.value = button.dataset.id ?? '';
 
-    activeDeleteButton = button;
-    activeDeleteButton.classList.add('is-reversed');
 
     deleteModal.classList.add('is-open');
   });
@@ -135,9 +133,5 @@ if (closeDeleteModal && deleteModal) {
   closeDeleteModal.addEventListener('click', () => {
     deleteModal.classList.remove('is-open');
 
-    if (activeDeleteButton) {
-      activeDeleteButton.classList.remove('is-reversed');
-      activeDeleteButton = null;
-    }
   });
 }

@@ -749,10 +749,10 @@ body {
   align-items: flex-start;
 
   width: 100%;
-  min-height: 105px;
+  min-height: 95px;
   height: auto;
 
-  padding: 16px 120px 24px 120px;
+  padding: 16px 120px 20px 120px;
   box-sizing: border-box;
 
   border-bottom: 1px solid #bbb;
@@ -811,7 +811,7 @@ body {
 .post-date {
   position: absolute;
   top: 16px;
-  right: 25px;
+  right: 35px;
 
   margin: 0;
   font-size: 12px;
@@ -819,7 +819,7 @@ body {
 
 .post-actions {
   position: absolute;
-  right: 25px;
+  right: 35px;
   bottom: 14px;
 
   display: flex;
@@ -865,8 +865,8 @@ body {
 
 /* 投稿フォーム大きさ高さ */
 .post-create-area {
-  min-height: 135px;
-  padding: 18px 65px;
+  min-height: 160px;
+  padding: 18px 80px;
   box-sizing: border-box;
   border-bottom: 6px solid #ddd;
 }
@@ -899,7 +899,7 @@ body {
 /* 投稿ボタン配置場所 */
 .post-create-button {
   position: absolute;
-  right: 80px;
+  right: 100px;
   bottom: 8px;
 
   width: 36px;

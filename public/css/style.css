@@ -996,10 +996,15 @@
 
 .sidebar {
   width: 280px;
+  /* 横幅修正 */
   flex-shrink: 0;
-  padding: 20px 15px;
+  padding: 16px 20px;
   box-sizing: border-box;
-  border-left: 1px solid #999;
+  border-left: 1px solid #aaa;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -2px;
+
 }
 
 .sidebar-status {
@@ -1008,6 +1013,17 @@
 
 .sidebar-username {
   margin: 0 0 25px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.sidebar-count-row {
+  display: flex;
+  /* 「フォロー数」と「人数」を横並びにする */
+  align-items: center;
+  /* 文字の上下位置を揃える */
+  gap: 60px;
+  /* 2つの文字の横間隔。ここを自分で調整する */
 }
 
 .sidebar-count-block {
@@ -1025,56 +1041,80 @@
 }
 
 .sidebar-count-block p span:last-child {
-  width: 45px;
+  width: 40px;
   text-align: center;
 }
 
 .sidebar-count-block a {
-  display: block;
-  width: 150px;
+  display: flex;
+  width: 125px;
+  padding: 10px 8px;
   margin: 0 0 0 auto;
-  padding: 10px 6px;
   box-sizing: border-box;
-  background: #186ac9;
+  background: #0656cf;
   color: #fff;
+  border-radius: 6px;
   text-align: center;
   text-decoration: none;
-  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 12px;
+  align-items: center;
+  /* 文字を上下中央にする */
+  justify-content: center;
+  letter-spacing: -1px;
+  font-weight: 400;
 }
 
-.sidebar-count-block:last-of-type {
-  margin-bottom: 0;
-  padding-bottom: 25px;
-  border-bottom: 1px solid #999;
-}
+/* フォロー・フォロワーリストボタンの指定をここで終了 */
 
 .sidebar-menu {
   margin: 0;
   padding: 25px 0 0;
+  /* 横線から検索ボタンまでの間隔 */
   list-style: none;
-}
-
-.sidebar-menu li {
-  margin: 0;
 }
 
 .sidebar-menu a {
   display: block;
-  width: 140px;
+  width: 155px;
   margin: 0 auto;
-  padding: 10px 6px;
+  padding: 8px 6px;
   box-sizing: border-box;
-  background: #186ac9;
+  background: #0656cf;
+  /* 見本で確認した青 */
   color: #fff;
+  border-radius: 6px;
+  justify-content: center;
+  /* 左右中央 */
+  font-size: 15px;
   text-align: center;
   text-decoration: none;
-  border-radius: 6px;
+  white-space: nowrap;
+  letter-spacing: -0.3px;
+  /* 文字同士の間隔を少し狭くする */
+}
+
+.sidebar-count-block:last-of-type {
+  position: relative;
+  margin-bottom: 0;
+  padding-bottom: 36px;
+  border-bottom: none;
+}
+
+.sidebar-count-block:last-of-type::after {
+  content: "";
+  position: absolute;
+  left: -22px;
+  right: -22px;
+  bottom: 0;
+  border-bottom: 1px solid #aaa;
+
 }
 
 .main-container {
   display: flex;
   width: 100%;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 90px);
 }
 
 .content {
@@ -1130,7 +1170,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #186ac9;
+  background: #0067c6;
 }
 
 .atlas-logo {

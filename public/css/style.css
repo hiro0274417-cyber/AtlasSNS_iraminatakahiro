@@ -865,8 +865,8 @@ body {
 
 /* 投稿フォーム大きさ高さ */
 .post-create-area {
-  min-height: 160px;
-  padding: 18px 80px;
+  min-height: 150px;
+  padding: 30px 80px;
   box-sizing: border-box;
   border-bottom: 6px solid #ddd;
 }
@@ -887,7 +887,7 @@ body {
   outline: 0;
   resize: none;
   box-sizing: border-box;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 /* placeholderを薄く */
@@ -900,10 +900,10 @@ body {
 .post-create-button {
   position: absolute;
   right: 100px;
-  bottom: 8px;
+  bottom: 1px;
 
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   padding: 1px;
   border-radius: 4px;
   border: 0;
@@ -930,10 +930,10 @@ body {
 }
 
 .header-user-icon {
-  width: 58px;
-  height: 58px;
-  max-width: 58px;
-  max-height: 58px;
+  width: 48px;
+  height: 48px;
+  max-width: 48px;
+  max-height: 48px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -951,12 +951,12 @@ body {
 .menu-title {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
   border: 0;
   background: transparent;
   color: #fff;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 23px;
+  font-weight: 400;
   user-select: none;
   -webkit-user-select: none;
 }
@@ -1005,12 +1005,12 @@ body {
   width: 280px;
   /* 横幅修正 */
   flex-shrink: 0;
-  padding: 16px 20px;
+  padding: 24px 20px 16px;
   box-sizing: border-box;
-  border-left: 1px solid #aaa;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: normal;
+  border-left: 1px solid #000;
+  font-size: 15px;
+  font-weight: 450;
+  letter-spacing: -1px;
 
 }
 
@@ -1019,9 +1019,11 @@ body {
 }
 
 .sidebar-username {
-  margin: 0 0 25px;
-  font-size: 16px;
-  font-weight: 400;
+  margin: 0 0 14px;
+  font-size: 15px;
+  font-weight: 450;
+
+  letter-spacing: -0.7px;
 }
 
 .sidebar-count-row {
@@ -1171,7 +1173,7 @@ body {
 .header {
   width: 100%;
   height: 85px;
-  padding: 0 20px;
+  padding: 0 14px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -1188,7 +1190,7 @@ body {
 
 .atlas-logo img {
   display: block;
-  width: 145px;
+  width: 110px;
   height: auto;
 }
 

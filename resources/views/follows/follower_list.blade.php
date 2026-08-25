@@ -11,11 +11,13 @@
     {{-- フォロワーのアイコン一覧 --}}
     <div class="connection-user-icons">
 
-        @forelse ($followers as $follower)
+        <div class="connection-user-icons-inner">
 
-            @if ($follower->followingUser)
-                <a
-                    href="{{ url('/user/profile/' . $follower->followingUser->id) }}"
+            @forelse ($followers as $follower)
+
+                @if ($follower->followingUser)
+                    <a
+                        href="{{ url('/user/profile/' . $follower->followingUser->id) }}"
                     class="connection-user-link"
                 >
                     <img
@@ -24,15 +26,16 @@
                         class="connection-user-icon"
                     >
                 </a>
-            @endif
+                @endif
 
-        @empty
+            @empty
 
-            <p class="connection-empty-message">
+              <p class="connection-empty-message">
                 フォロワーはいません。
-            </p>
+                </p>
 
-        @endforelse
+            @endforelse
+        </div>
 
     </div>
 

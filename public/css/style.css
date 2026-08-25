@@ -291,18 +291,12 @@ body {
   width: 100%;
 }
 
-.connection-list-title {
-  float: left;
-  margin: 35px 0 0 75px;
-  font-size: 22px;
-  font-weight: 400;
-}
 
 .connection-user-icons {
   position: relative;
 
   min-height: 145px;
-  margin-left: 260px;
+  margin-left: 220px;
   padding: 20px 30px 20px 0;
 
   display: flex;
@@ -318,7 +312,7 @@ body {
   content: "";
   position: absolute;
 
-  left: -260px;
+  left: -220px;
   right: 0;
   bottom: 0;
 
@@ -357,7 +351,7 @@ body {
   width: 100%;
   min-height: 125px;
 
-  padding: 20px 90px;
+  padding: 20px 90px 20px 60px;
   box-sizing: border-box;
 
   border-bottom: 1px solid #aaa;
@@ -1201,10 +1195,12 @@ body {
 .connection-list-title {
   float: left;
 
-  margin: 35px 0 0 75px;
+  margin: 25px 0 0 50px;
 
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 400;
+  transform: scaleX(0.7);
+  transform-origin: left center;
 }
 
 .connection-list-header {
@@ -1217,7 +1213,7 @@ body {
 .connection-user-icons {
   position: relative;
 
-  min-height: 145px;
+  min-height: 155px;
   margin-left: 260px;
   padding: 20px 30px 20px 0;
 
@@ -1229,6 +1225,16 @@ body {
   box-sizing: border-box;
 
   border-bottom: none;
+}
+
+.connection-user-icons-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+
+  transform: translateX(-20px);
+  /* アイコンだけ40px左へ移動 */
 }
 
 .connection-user-icons::after {
@@ -1271,7 +1277,7 @@ body {
   width: 100%;
   min-height: 125px;
 
-  padding: 20px 90px 20px 140px;
+  padding: 20px 90px 20px 110px;
   box-sizing: border-box;
 
   border-bottom: 1px solid #aaa;

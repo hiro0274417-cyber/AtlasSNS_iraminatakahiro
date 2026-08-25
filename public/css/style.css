@@ -797,7 +797,7 @@ body {
   width: 650px;
   max-width: 100%;
 
-  margin: 6px 0 0;
+  margin: 14px 0 0;
   padding: 0;
 
   font-size: 13px;
@@ -820,7 +820,7 @@ body {
 .post-actions {
   position: absolute;
   right: 35px;
-  bottom: 14px;
+  bottom: 6px;
 
   display: flex;
   align-items: center;
@@ -840,20 +840,20 @@ body {
 .edit-btn img,
 .delete-btn img {
   display: block;
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   border-radius: 4px;
   object-fit: contain;
 }
 
 .delete-btn {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   padding: 0;
   border: 0;
   border-radius: 4px;
 
-  background: url("../images/trash.png") center / 32px 32px no-repeat;
+  background: url("../images/trash.png") center / 42px 42px no-repeat;
 
   cursor: pointer;
 }
@@ -865,7 +865,7 @@ body {
 
 /* 投稿フォーム大きさ高さ */
 .post-create-area {
-  min-height: 150px;
+  min-height: 10px;
   padding: 30px 80px;
   box-sizing: border-box;
   border-bottom: 6px solid #ddd;
@@ -921,13 +921,6 @@ body {
   display: block;
 }
 
-.edit-btn img,
-.delete-btn img {
-  display: block;
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
 
 .header-user-icon {
   width: 48px;
@@ -964,8 +957,8 @@ body {
 .menu-arrow {
   width: 16px;
   height: 16px;
-  border-right: 3px solid #fff;
-  border-bottom: 3px solid #fff;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
   transform: rotate(45deg);
   transition: transform 0.2s ease;
 }

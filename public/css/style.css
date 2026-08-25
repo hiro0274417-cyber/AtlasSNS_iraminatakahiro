@@ -198,11 +198,14 @@ body {
 .search-user-box {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: flex-start;
+  gap: 180px;
   padding: 15px 0;
 }
 
+.search-user-info {
+  margin-left: 200px;
+}
 
 .search-user-icon {
   display: block;
@@ -225,9 +228,9 @@ body {
 .user-search-header {
   display: flex;
   align-items: center;
-  min-height: 180px;
-  padding: 0 70px;
-  border-bottom: 6px solid #ddd;
+  min-height: 150px;
+  padding: 0;
+  border-bottom: 8px solid #ddd;
   box-sizing: border-box;
 }
 
@@ -239,7 +242,7 @@ body {
 }
 
 .user-search-input {
-  width: 370px;
+  width: 380px;
   height: 55px;
   padding: 0 20px;
   box-sizing: border-box;
@@ -247,9 +250,9 @@ body {
 }
 
 .user-search-button {
-  width: 55px;
-  height: 55px;
-  padding: 8px;
+  width: 60px;
+  height: 60px;
+  padding: 6px;
   border: 0;
   background: #186ac9;
   cursor: pointer;
@@ -263,14 +266,6 @@ body {
 /* =========================
      Follow Buttons
 ========================= */
-.follow-button,
-.unfollow-button {
-  min-width: 120px;
-  padding: 10px 15px;
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
 .follow-button {
   background: #186ac9;
@@ -1363,7 +1358,7 @@ body {
   padding: 0 15px;
   box-sizing: border-box;
 
-  border: 1px solid #777;
+  border: 2px solid #777;
   border-radius: 3px;
 
   font-size: 16px;
@@ -1376,18 +1371,24 @@ body {
 
   margin-left: 15px;
   padding: 0;
+  margin: 0;
 
   border: none;
   background: transparent;
-
+  display: flex;
+  /* ← 追加 */
+  align-items: center;
+  /* 虫眼鏡を上下中央 */
+  justify-content: center;
+  /* 虫眼鏡を左右中央 */
   cursor: pointer;
 }
 
 .user-search-button img {
   display: block;
 
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
 
   object-fit: contain;
 }
@@ -1424,6 +1425,7 @@ body {
   align-items: center;
   gap: 30px;
   width: 200px;
+  transform: translateX(75px);
 }
 
 .search-user-profile a {
@@ -1464,8 +1466,8 @@ body {
 
 /* フォローする */
 .follow-button {
-  width: 150px;
-  height: 40px;
+  width: 130px;
+  height: 35px;
 
   border: none;
   border-radius: 6px;
@@ -1479,8 +1481,8 @@ body {
 
 /* フォロー解除 */
 .unfollow-button {
-  width: 150px;
-  height: 40px;
+  width: 130px;
+  height: 35px;
 
   border: none;
   border-radius: 6px;

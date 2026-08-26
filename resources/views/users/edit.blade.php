@@ -99,9 +99,7 @@
                 アイコン画像
             </label>
 
-            <label for="icon_image" class="icon-image-select">
-                ファイルを選択
-            </label>
+            <label for="icon_image" class="icon-image-select"></label>
 
             <input
                 type="file"

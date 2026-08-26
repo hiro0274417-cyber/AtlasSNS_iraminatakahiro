@@ -649,16 +649,20 @@ body {
 .menu-list {
   display: none;
   position: absolute;
-  top: 105%;
-  right: -30px;
-  width: 290px;
+  top: 100%;
+  right: -14px;
+  width: 280px;
   /*↑アコーディオンメニュー横幅*/
   margin: 0;
   padding: 0;
   list-style: none;
   background: #fff;
-  z-index: 2000;
-  border: 1px solid #999;
+  z-index: 1000;
+  /* ↑サイドバーより手前に表示 */
+  top: calc(100% + 15px);
+  /*↑ヘッダー下から10px離す */
+  border: 2px solid #00297e;
+  font-size: 22px;
 }
 
 .menu-list.is-open {
@@ -678,8 +682,9 @@ body {
 
 .menu-list a,
 .menu-list button {
-  display: block;
-  padding: 32px 26px;
+  min-height: 90px;
+  display: flex;
+  padding: 28px 30px;
   /*↑アコーディオンメニュー縦幅*/
   border: 0;
   background: #fff;
@@ -687,11 +692,13 @@ body {
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .menu-list li:nth-child(2) a {
-  background: #0d3f8f;
+  background: #00297e;
   color: #fff;
 }
 
@@ -1162,6 +1169,10 @@ body {
   align-items: center;
   justify-content: space-between;
   background: #0067c6;
+}
+
+.header-menu {
+  position: relative;
 }
 
 .atlas-logo {

@@ -559,8 +559,8 @@ body {
 
 .profile-edit-user-icon {
   position: absolute;
-  left: -90px;
-  top: 40px;
+  left: -60px;
+  top: 60px;
 }
 
 .profile-edit-user-icon img {
@@ -572,9 +572,9 @@ body {
 
 .profile-edit-form {
   width: 100%;
-  max-width: 650px;
+  max-width: 640px;
   margin: 0 auto;
-  padding-top: 45px;
+  padding-top: 60px;
   position: relative;
   transform: translateX(35px);
 }
@@ -583,25 +583,33 @@ body {
   display: flex;
   align-items: center;
   gap: 40px;
-  margin-bottom: 28px;
+  margin-bottom: 40px;
 }
 
 .profile-edit-row label {
-  width: 180px;
+  width: 230px;
   /* 180px
      ラベル領域を少し短くしてフォームを左へ寄せる */
 
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 400;
 
   letter-spacing: -0.5px;
   /* 文字を少し凝縮 */
+
+}
+
+.profile-edit-row>label:not(.icon-image-select) {
+  transform: translateX(30px) scaleX(0.75);
+  transform-origin: left center;
+  position: relative;
 }
 
 .profile-edit-row input,
 .profile-edit-row textarea,
 .profile-edit-row .icon-image-select {
   flex: 1;
+  font-size: 18px;
   max-width: 500px;
   padding: 10px;
   background: #eee;
@@ -610,18 +618,21 @@ body {
 }
 
 .profile-edit-row textarea {
-  height: 65px;
+  height: 45px;
+  min-height: 45px;
+  max-height: 45px;
+
   resize: none;
-  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .profile-update-button {
   display: block;
 
-  width: 150px;
+  width: 155px;
   /*  更新ボタン */
 
-  height: 42px;
+  height: 36px;
   margin: 35px auto 0;
   padding: 0;
   border: 0;
@@ -629,7 +640,7 @@ body {
   background: #ed3a50;
   color: #fff;
   font-size: 15px;
-
+  margin-left: 190px;
   text-align: center;
   cursor: pointer;
 }
@@ -1140,7 +1151,7 @@ body {
 
 .icon-image-select {
   width: 100%;
-  height: 120px;
+  height: 90px;
   box-sizing: border-box;
   border: 1px solid #999;
   background: #eee;
@@ -1152,9 +1163,14 @@ body {
   cursor: pointer;
 }
 
+.icon-image-title {
+  position: relative;
+  top: -24px;
+}
+
 .icon-image-select::before {
   content: "ファイルを選択";
-  padding: 10px 45px;
+  padding: 3px 35px;
   background: #fff;
   color: #aaa;
   font-size: 20px;

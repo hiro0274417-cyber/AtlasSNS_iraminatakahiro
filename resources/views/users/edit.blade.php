@@ -85,7 +85,7 @@
 
                 <div class="profile-edit-row">
             <label for="bio">
-                自己紹介文
+                自己紹介
             </label>
 
             <textarea
@@ -95,9 +95,7 @@
         </div>
 
         <div class="profile-edit-row">
-            <label for="icon_image">
-                アイコン画像
-            </label>
+            <label class="icon-image-title">アイコン画像</label>
 
             <label for="icon_image" class="icon-image-select"></label>
 

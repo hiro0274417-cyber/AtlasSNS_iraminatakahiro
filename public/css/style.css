@@ -651,7 +651,7 @@ body {
   position: absolute;
   top: 105%;
   right: -30px;
-  width: 280px;
+  width: 290px;
   /*↑アコーディオンメニュー横幅*/
   margin: 0;
   padding: 0;
@@ -679,7 +679,7 @@ body {
 .menu-list a,
 .menu-list button {
   display: block;
-  padding: 37px;
+  padding: 32px 26px;
   /*↑アコーディオンメニュー縦幅*/
   border: 0;
   background: #fff;
@@ -687,6 +687,7 @@ body {
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+
 }
 
 .menu-list li:nth-child(2) a {
@@ -1094,8 +1095,8 @@ body {
 .sidebar-count-block:last-of-type::after {
   content: "";
   position: absolute;
-  left: -22px;
-  right: -22px;
+  left: -20px;
+  right: -20px;
   bottom: 0;
   border-bottom: 1px solid #aaa;
 
@@ -1199,7 +1200,8 @@ body {
 
   font-size: 26px;
   font-weight: 400;
-  transform: scaleX(0.7);
+  transform: translateX(25px) scaleX(0.7);
+  /* 上部のフォロワーリストだけ移動・文字間隔の調整 */
   transform-origin: left center;
 }
 
@@ -1233,8 +1235,8 @@ body {
   align-content: flex-start;
   gap: 8px;
 
-  transform: translateX(-20px);
-  /* アイコンだけ40px左へ移動 */
+  transform: translateX(-10px);
+  /* アイコンだけ左へ移動 */
 }
 
 .connection-user-icons::after {
